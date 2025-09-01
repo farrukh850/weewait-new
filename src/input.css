@@ -1,0 +1,403 @@
+@import "tailwindcss";
+@import 'fonts.css';
+@import 'carousel.css';
+@import 'layout.css';
+
+@theme {
+  /* Colors - using exact naming to match HTML classes */
+  --color-primary: #084DA7 !important;
+  --color-primary_black: #1E1E1E !important;
+  --color-accent: #FFA9CF !important;
+  --color-accent_hover: #F27EB1 !important;
+  --color-accent_skyblue: #7DADFE !important;
+  --color-accent_yellow: #FEEA94 !important;
+  --color-bg_grey: #F8FAFB !important;
+  --color-childcare_card: #F8FAFB !important;
+  --color-feedbacks_bg: #084DA7 !important;
+  --color-input_bg: #E7F2F8 !important;
+
+  /* Font families - v4.1 compatible */
+  --font-family-figtree: Figtree, sans-serif;
+  --font-family-rocaone: RocaOne, sans-serif;
+
+  /* Line heights - v4.1 compatible */
+  --line-height-extra-loose: 110px;
+  --line-height-80: 80px;
+  --line-height-120: 120%;
+  --line-height-110: 110%;
+
+  /* Font sizes - v4.1 compatible */
+  --font-size-6xl: 64px;
+  --font-size-7xl: 90px;
+  --font-size-textmed: 32px;
+  --font-size-mobile: 40px;
+
+  /* Spacing values - v4.1 compatible */
+  --spacing-240: 240px;
+  --spacing-600: 600px;
+  --spacing-800: 800px;
+  --spacing-880: 880px;
+  --spacing-736: 736px;
+  --spacing-1168: 1168px;
+  --spacing-8xl: 1760px;
+  --spacing-daycare_btn_width: 248px;
+  --spacing-toast_width: 428px;
+  --spacing-plan_card_height: 697px;
+  --spacing-90p: 90%;
+
+  /* Border radius - v4.1 compatible */
+  --radius-32: 32px;
+
+  /* Border width - v4.1 compatible */
+  --border-width-3: 3px;
+
+  /* Custom breakpoint - v4.1 compatible */
+  --breakpoint-xxl: 1600px;
+}
+
+/* Global button cursor fix */
+button {
+  cursor: pointer;
+}
+
+/* Custom utility classes optimized for v4.1 */
+@layer utilities {
+  /* Font families */
+  .font-figtree {
+    font-family: var(--font-family-figtree);
+  }
+
+  .font-rocaone {
+    font-family: var(--font-family-rocaone);
+  }
+
+  /* Background colors for custom theme colors */
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .bg-primary_black {
+    background-color: var(--color-primary_black) !important;
+  }
+
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
+
+  .bg-accent_hover {
+    background-color: var(--color-accent_hover);
+  }
+
+  .bg-accent_skyblue {
+    background-color: var(--color-accent_skyblue) !important;
+  }
+
+  .bg-accent_yellow {
+    background-color: var(--color-accent_yellow);
+  }
+
+  .bg-bg_grey {
+    background-color: var(--color-bg_grey);
+  }
+
+  .bg-childcare_card {
+    background-color: var(--color-childcare_card);
+  }
+
+  .bg-feedbacks_bg {
+    background-color: var(--color-feedbacks_bg);
+  }
+
+  .bg-input_bg {
+    background-color: var(--color-input_bg);
+  }
+
+  /* Text colors for custom theme colors */
+  .text-primary {
+    color: var(--color-primary) !important;
+  }
+
+  .text-primary_black {
+    color: var(--color-primary_black) !important;
+  }
+
+  .text-accent {
+    color: var(--color-accent) !important;
+  }
+
+  .text-accent_hover {
+    color: var(--color-accent_hover) !important;
+  }
+
+  .text-accent_skyblue {
+    color: var(--color-accent_skyblue) !important;
+  }
+
+  .text-accent_yellow {
+    color: var(--color-accent_yellow) !important;
+  }
+
+  /* Border colors for custom theme colors */
+  .border-primary {
+    border-color: var(--color-primary) !important;
+  }
+
+  .border-primary_black {
+    border-color: var(--color-primary_black) !important;
+  }
+
+  .border-accent {
+    border-color: var(--color-accent) !important;
+  }
+
+  .border-accent_hover {
+    border-color: var(--color-accent_hover) !important;
+  }
+
+  .border-accent_skyblue {
+    border-color: var(--color-accent_skyblue) !important;
+  }
+
+  /* Hover border colors for custom theme colors */
+  .hover\:border-primary:hover {
+    border-color: var(--color-primary) !important;
+  }
+
+  .hover\:border-primary_black:hover {
+    border-color: var(--color-primary_black) !important;
+  }
+
+  .hover\:border-accent:hover {
+    border-color: var(--color-accent) !important;
+  }
+
+  .hover\:border-accent_hover:hover {
+    border-color: var(--color-accent_hover) !important;
+  }
+
+  .hover\:border-accent_skyblue:hover {
+    border-color: var(--color-accent_skyblue) !important;
+  }
+
+  /* Hover background colors for custom theme colors */
+  .hover\:bg-primary:hover {
+    background-color: var(--color-primary) !important;
+  }
+
+  .hover\:bg-primary_black:hover {
+    background-color: var(--color-primary_black) !important;
+  }
+
+  .hover\:bg-accent:hover {
+    background-color: var(--color-accent) !important;
+  }
+
+  .hover\:bg-accent_hover:hover {
+    background-color: var(--color-accent_hover) !important;
+  }
+
+  .hover\:bg-accent_skyblue:hover {
+    background-color: var(--color-accent_skyblue) !important;
+  }
+
+  /* Line heights */
+  .leading-extra-loose {
+    line-height: var(--line-height-extra-loose);
+  }
+
+  .leading-80 {
+    line-height: var(--line-height-80);
+  }
+
+  .leading-120 {
+    line-height: var(--line-height-120);
+  }
+
+  .leading-110 {
+    line-height: var(--line-height-110);
+  }
+
+  /* Custom font sizes */
+  .text-6xl {
+    font-size: var(--font-size-6xl);
+  }
+
+  .text-7xl {
+    font-size: var(--font-size-7xl);
+  }
+
+  .text-mobile {
+    font-size: var(--font-size-mobile);
+  }
+
+  /* text-textmed only applies to devices smaller than lg */
+  @media (max-width: 1023px) {
+    .text-textmed {
+      font-size: var(--font-size-textmed);
+    }
+  }
+
+  /* Custom widths */
+  .w-8xl {
+    width: var(--spacing-8xl);
+  }
+
+  .w-daycare_btn_width {
+    width: var(--spacing-daycare_btn_width);
+  }
+
+  .w-600 {
+    width: var(--spacing-600);
+  }
+
+  .w-800 {
+    width: var(--spacing-800);
+  }
+
+  .w-1168 {
+    width: var(--spacing-1168);
+  }
+
+  .w-toast_width {
+    width: var(--spacing-toast_width);
+  }
+
+  .w-240 {
+    width: var(--spacing-240);
+  }
+
+  /* Custom heights */
+  .h-736 {
+    height: var(--spacing-736);
+  }
+
+  .h-240 {
+    height: var(--spacing-240);
+  }
+
+  .h-880 {
+    height: var(--spacing-880);
+  }
+
+  .h-90p {
+    height: var(--spacing-90p);
+  }
+
+  /* Plan card height class used in pricing.html */
+  .plan_card_height {
+    height: var(--spacing-plan_card_height);
+  }
+
+  /* Arbitrary height values used in HTML */
+  .h-\[335px\] {
+    height: 335px;
+  }
+
+  .h-\[95vh\] {
+    height: 95vh;
+  }
+
+  /* Custom border radius */
+  .rounded-32 {
+    border-radius: var(--radius-32);
+  }
+
+  /* Group hover height utility - fixed to be separate */
+  .group:hover .group-hover\:h-\[335px\] {
+    height: 335px !important;
+  }
+
+  /* Custom border width */
+  .border-3 {
+    border-width: var(--border-width-3);
+  }
+}
+
+/* Responsive font size utilities for lg breakpoint */
+@media (min-width: 1024px) {
+  .lg\:text-6xl {
+    font-size: var(--font-size-6xl);
+  }
+
+  .lg\:text-7xl {
+    font-size: var(--font-size-7xl);
+  }
+
+  .lg\:text-textmed {
+    font-size: var(--font-size-textmed);
+  }
+
+  /* Responsive line height utilities for lg breakpoint */
+  .lg\:leading-extra-loose {
+    line-height: var(--line-height-extra-loose);
+  }
+
+  .lg\:leading-80 {
+    line-height: var(--line-height-80);
+  }
+
+  .lg\:leading-120 {
+    line-height: var(--line-height-120);
+  }
+
+  .lg\:leading-110 {
+    line-height: var(--line-height-110);
+  }
+}
+
+/* Custom breakpoint media query for xxl */
+@media (min-width: 1600px) {
+  .xxl\:px-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .xxl\:gap-40 {
+    gap: 10rem;
+  }
+
+  .xxl\:text-7xl {
+    font-size: var(--font-size-7xl);
+  }
+
+  .xxl\:leading-extra-loose {
+    line-height: var(--line-height-extra-loose);
+  }
+
+  /* Additional responsive line height utilities for xxl breakpoint */
+  .xxl\:leading-80 {
+    line-height: var(--line-height-80);
+  }
+
+  .xxl\:leading-120 {
+    line-height: var(--line-height-120);
+  }
+
+  .xxl\:leading-110 {
+    line-height: var(--line-height-110);
+  }
+
+  .xxl\:flex {
+    display: flex;
+  }
+
+  .xxl\:w-800 {
+    width: var(--spacing-800);
+  }
+
+  .xxl\:pr-0 {
+    padding-right: 0;
+  }
+
+  .xxl\:-right-20 {
+    right: -5rem;
+  }
+
+  .xxl\:-right-28 {
+    right: -7rem;
+  }
+
+  .xxl\:left-0 {
+    left: 0;
+  }
+}

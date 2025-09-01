@@ -1,0 +1,16 @@
+/* Accordion styles */
+.faq-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+}
+
+.faq-header button {
+  transition: background-color 0.3s ease;
+    flex: 0 0 64px;
+}
+@media (max-width: 1000px) {
+    .faq-header button {
+        transition: background-color 0.3s ease;
+        flex: 0 0 40px;
+    }
+}

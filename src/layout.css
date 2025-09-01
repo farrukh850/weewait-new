@@ -1,0 +1,133 @@
+.container{
+    max-width: 1400px !important;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.container-plans{
+    max-width: 1316px;
+    margin: 0 auto;
+}
+.parents-container{
+    max-width: 1168px;
+    margin: 0 auto;
+}
+.testimonials-container{
+    max-width: 1536px;
+    margin: 0 auto;
+}
+.single-feedback{
+    max-width: 724px;
+}
+.reviewer-photo{
+    width: 120px;
+    height: 120px;
+}
+#child-popup-mobile{
+    display: none;
+}
+.reviewer-photo-big{
+    width: 500px;
+    height: 500px;
+}
+.paragraph_width{
+    max-width: 576px;
+}
+.monthly-yearly-btn{
+    max-width: 363px;
+    width: 100%;
+}
+.plan_card_height{
+    min-height: 697px;
+}
+.smiling-kid{
+    width: 640px;
+    height: 628px;
+}
+.smiling-kid img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.about-family-image{
+    height: 576px;
+}
+.filter-dropdown{
+    z-index: 1000;
+}
+.flex-40{
+    flex: 40%;
+}
+.flex-60{
+    flex: 60%;
+}
+.bg-childcare_card_daycare{
+    min-height: 408px;
+}
+.daycare-card-height{
+    height: 168px;
+}
+.map-view-container{
+    padding-left: calc((100% - 1400px) / 2);
+    max-width: 100%;
+}
+footer{
+    padding-top: 40px;
+}
+@media (max-width: 1000px) {
+    #main-nav ul{
+        gap: 15px;
+    }
+    #main-nav ul li a{
+        font-size: 15px;
+    }
+    .container, .container-plans{
+        padding-right: 16px !important;
+        padding-left: 16px !important;
+    }
+    .smiling-kid{
+        width: 100%;
+        height: 314px;
+    }
+    .about-family-image{
+        height: 412px;
+    }
+    .bg-childcare_card_daycare{
+        min-height: 100% !important;
+        height: 100% !important;
+    }
+    .daycare-card-height{
+        height: 100% !important;
+    }
+    .popup-overlay {
+        justify-content: flex-end !important;
+        align-items: flex-end !important;
+    }
+    .map-view-container{
+        padding: 0 16px !important;
+    }
+    #child-popup-mobile{
+        display: flex;
+    }
+    footer{
+        padding-top: 0px !important;
+    }
+}
+@media (max-width: 1400px) {
+    .container, .container-plans{
+        padding-right: 16px !important;
+        padding-left: 16px !important;
+    }
+    .plan_card_height{
+        min-height: 100%;
+        height: 100%;
+    }
+    .plan_card_height button{
+        position: relative;
+        bottom: 0;
+        margin-top: 32px;
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+}

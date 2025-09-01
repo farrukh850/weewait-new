@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./src/carousel.css">
+    <link rel="stylesheet" href="./src/scrollbar.css">
+    <link rel="stylesheet" href="./src/accordion.css">
+    <link rel="stylesheet" href="./src/popup.css">
+    <title>WeeWait</title>
+    <link href="./src/input.css" rel="stylesheet">
+    <!-- Vite script will be injected here automatically during development -->
+</head>
+<body class="font-figtree">
+    <header class="pt-4 pb-3 md:pt-10 md:pb-4 font-figtree">
+        <div class="container px-4 flex items-center justify-between">
+            <a href="/"><img src="/images/logo.svg" width="135" alt="Wee Wait"></a>
+
+            <!-- Hamburger Menu Button (visible on mobile) -->
+            <button id="hamburger-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 z-30">
+                <span class="block w-6 h-0.5 bg-primary_black transition-all"></span>
+                <span class="block w-6 h-0.5 bg-primary_black transition-all"></span>
+                <span class="block w-6 h-0.5 bg-primary_black transition-all"></span>
+            </button>
+
+            <!-- Navigation (hidden on mobile) -->
+            <nav id="main-nav" class="fixed md:static top-0 right-0 bottom-0 left-0 bg-white md:bg-transparent flex md:flex-row items-center justify-center z-20 transform translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out md:transition-none">
+                <ul class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                    <li><a href="/daycare-list-view" class="text-primary_black text-lg leading-6">Daycares</a></li>
+                    <li><a href="/how-it-works" class="text-primary_black text-lg leading-6">How it works?</a></li>
+                    <li><a href="/faq" class="text-primary_black text-lg leading-6">FAQ</a></li>
+                    <li><a href="/pricing" class="text-primary_black text-lg leading-6">Pricing</a></li>
+                    <li><a href="about.html" class="text-primary_black text-lg leading-6">About us</a></li>
+                    <li><a href="contact.html" class="text-primary_black text-lg leading-6">Contact us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Location and Login (hidden on mobile, shown in mobile menu) -->
+            <div class="hidden md:flex gap-4 items-center">
+                <div class="md:hidden xxl:flex items-center p-2 cursor-pointer rounded-full border border-primary_black/20 gap-2"><img src="/images/map-marker.svg" alt="Map Marker"><p class="text-base leading-5">163 Maplewood Drive, Ottawa</p><img src="/images/caret-down.svg" alt="Angle down" class="ml-3"></div>
+                <a href="#" class="py-3 h-12 flex items-center justify-center px-6 border text-lg leading-3 border-primary_black rounded-full transition-all duration-300 hover:bg-black hover:text-white hover:border-black font-rocaone">Log in</a>
+            </div>
+
+            <!-- Mobile menu location and login (visible inside mobile menu) -->
+            <div id="mobile-menu-items" class="fixed bottom-0 left-0 right-0 top-0 bg-white flex flex-col items-center justify-center gap-8 z-10 transform translate-x-full transition-transform duration-300 ease-in-out">
+                <div class="flex flex-col items-center gap-8 w-full px-4">
+                    <div class="flex items-center p-2 cursor-pointer rounded-full border border-primary_black/20 gap-2 w-full justify-center"><img src="/images/map-marker.svg" alt="Map Marker"><p class="text-base leading-5">163 Maplewood Drive, Ottawa</p><img src="/images/caret-down.svg" alt="Angle down" class="ml-3"></div>
+                    <a href="#" class="py-3 w-full flex items-center justify-center px-6 border text-lg leading-6 border-primary_black rounded-full transition-all duration-300 hover:bg-black hover:text-accent hover:border-primary_black">Log in</a>
+                </div>
+            </div>
+        </div>
+    </header>
+     <main>
+        <div class="container relative">
+            <!--  Daycare near me -->
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col mx-auto lg:mx-0 gap-6 pt-8 pb-6 lg:pt-14 lg:pb-10 text-center lg:text-start">
+                    <h1 class="text-textmed lg:text-5xl leading-120 font-semibold">Daycares Near Me</h1>
+                    <p class="text-base lg:text-lg leading-120">Explore and compare daycare centers near you</p>
+                </div>
+                <div class="items-center gap-4 hidden lg:flex">
+                    <div class="relative">
+                        <input type="text" placeholder="Search" class="h-14 focus:outline-none text-black/80 placeholder:text-black/80 w-72 rounded-full py-4 px-12 text-base leading-120 bg-bg_grey">
+                        <img src="/images/search.svg" alt="Search Icon" class="absolute left-6 top-1/2 transform -translate-y-1/2 w-4">
+                    </div>
+                    <div class="flex items-center p-2 bg-bg_grey rounded-full">
+                        <a href="daycare-list-view.html" class="flex items-center justify-center text-sm leading-120 italic h-10 w-44 bg-transparent rounded-full">List View</a>
+                        <a href="daycare-map-view.html" class="flex items-center justify-center text-sm leading-120 italic h-10 w-44 bg-accent hover:bg-accent rounded-full text-black/70">Map View</a>
+                    </div>
+                </div>
+            </div>
+            <!--  Filters mobile -->
+            <div class="flex lg:hidden items-center gap-2">
+                <button id="filter-mobile-btn" class="p-4 w-full border h-12 border-black flex items-center justify-center gap-2 rounded-full"><img src="/images/filter-icon.svg" alt="Filter Icon"><p class="text-lg leading-6 font-rocaone">Filters</p><span class="w-4 h-4 bg-accent rounded-full flex items-center justify-center text-xs font-semibold">3</span></button>
+                <button id="search-mobile-btn" class="h-12 min-w-12 flex items-center justify-center bg-black rounded-full"><img src="/images/search-white.svg" alt="Search" class="w-4"></button>
+            </div>
+            <!--  Filter views mobile -->
+            <div class="flex lg:hidden items-center gap-2 mt-6 justify-between">
+                <button class="flex items-center justify-center gap-2"><img src="/images/list-view.svg" alt="Filter Icon"><span class="text-sm text-black/80 leading-6">List view</span></button>
+                <button id="sort-mobile-btn" class="flex items-center justify-center gap-2"><span class="text-sm text-black/80 leading-6">Nearest</span><img src="/images/caret-down.svg" alt="Filter Icon"></button>
+            </div>
+            <!--  Filters -->
+            <div class="items-start xl:items-center justify-between hidden lg:flex">
+                <div class="flex items-center gap-3 md:gap-4 flex-wrap w-full">
+                    <div class="filter-button flex items-center gap-2 h-12 px-3 py-4 rounded-full bg-bg_grey cursor-pointer relative mb-2">
+                        <img src="/images/distance-icon.svg" alt="Distance Icon">
+                        <p class="text-base leading-120">Distance</p>
+                        <p class="w-4 h-4 text-xs font-semibold bg-accent rounded-full flex items-center justify-center">1</p>
+                        <img src="/images/caret-down.svg" alt="Caret Down">
+                        <div class="w-60 rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="py-3 px-2 text-sm leading-120">Show All</li>
+                                <li class="py-3 px-2 text-sm leading-120">Within 1 km</li>
+                                <li class="py-3 px-2 text-sm leading-120 relative">Within 5 km <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2"></li>
+                                <li class="py-3 px-2 text-sm leading-120">Within 10 km</li>
+                                <li class="py-3 px-2 text-sm leading-120">Up to 20+ km</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter-button flex items-center gap-2 h-12 px-3 py-4 rounded-full bg-bg_grey cursor-pointer relative mb-2">
+                        <img src="/images/license-icon.svg" alt="License Icon">
+                        <p class="text-base leading-120">Licensed</p>
+                        <p class="w-4 h-4 text-xs font-semibold bg-accent rounded-full flex items-center justify-center">1</p>
+                        <img src="/images/caret-down.svg" alt="Caret Down">
+                        <div class="w-60 rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="py-3 px-2 text-sm leading-120">Licensed only</li>
+                                <li class="py-3 px-2 text-sm leading-120">Unlicensed</li>
+                                <li class="py-3 px-2 text-sm leading-120 relative">Both <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter-button flex items-center gap-2 h-12 px-3 py-4 rounded-full bg-bg_grey cursor-pointer relative mb-2">
+                        <img src="/images/facility-icon.svg" alt="Facility Icon">
+                        <p class="text-base leading-120">Facility Type</p>
+                        <img src="/images/caret-down.svg" alt="Caret Down">
+                        <div class="w-60 rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="py-3 px-2 text-sm leading-120">Show All</li>
+                                <li class="py-3 px-2 text-sm leading-120">Home Daycare</li>
+                                <li class="py-3 px-2 text-sm leading-120 relative">Daycare Center <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter-button flex items-center gap-2 h-12 px-3 py-4 rounded-full bg-bg_grey cursor-pointer relative mb-2">
+                        <img src="/images/service-icon.svg" alt="Service Icon">
+                        <p class="text-base leading-120">Service Type</p>
+                        <img src="/images/caret-down.svg" alt="Caret Down">
+                        <div class="w-60 rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="py-3 px-2 text-sm leading-120">Show All</li>
+                                <li class="py-3 px-2 text-sm leading-120 flex items-center gap-1"><img src="/images/i.svg" alt="i"><p>Full time care</p></li>
+                                <li class="py-3 px-2 text-sm leading-120 flex items-center gap-1 relative"><img src="/images/i.svg" alt="i"><p>Part time care</p>Both <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2"></li>
+                                <li class="py-3 px-2 text-sm leading-120 flex items-center gap-1"><img src="/images/i.svg" alt="i"><p>Drop-in care</p></li>
+                                <li class="py-3 px-2 text-sm leading-120 flex items-center gap-1"><img src="/images/i.svg" alt="i"><p>Preschool</p></li>
+                                <li class="py-3 px-2 text-sm leading-120 flex items-center gap-1"><img src="/images/i.svg" alt="i"><p>Infant care</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form class="filter-button flex items-center gap-2 h-12 px-3 py-4 rounded-full bg-bg_grey cursor-pointer relative mb-2">
+                        <img src="/images/dollar-icon.svg" alt="Dollar Icon">
+                        <p class="text-base leading-120">Fee Per Day</p>
+                        <img src="/images/caret-down.svg" alt="Caret Down">
+                        <div class="w-60 rounded-2xl p-4 absolute top-full left-0 shadow bg-white filter-dropdown">
+                            <span class="w-full h-2 rounded-md bg-gray-100 block relative">
+                                <span class="range-slider-fill h-2 absolute top-0 left-0 right-0 rounded-md bg-accent" style="width: 50%;"></span>
+                                <img src="/images/pause.svg" alt="Min" class="range-slider-min absolute top-1/2 -translate-y-1/2 left-10 w-3 cursor-pointer" data-position="left">
+                                <img src="/images/pause.svg" alt="Max" class="range-slider-max absolute top-1/2 -translate-y-1/2 right-10 w-3 cursor-pointer" data-position="right">
+                            </span>
+                            <div class="flex gap-2 justify-between items-center mt-6">
+                                <span class="min-value h-12 bg-[#E7F2F8] text-base leading-120 rounded-xl flex-1 flex items-center justify-center">$ 50</span>
+                                <span class="h-[1px] w-2 bg-gray-200 block"></span>
+                                <span class="max-value h-12 bg-[#E7F2F8] text-base leading-120 rounded-xl flex-1 flex items-center justify-center border-2 border-accent_skyblue">$ 100</span>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="filter-button flex items-center gap-2 h-12 px-3 py-4 rounded-full bg-bg_grey cursor-pointer relative mb-2">
+                        <img src="/images/language-icon.svg" alt="Language Icon">
+                        <p class="text-base leading-120">Languages</p>
+                        <img src="/images/caret-down.svg" alt="Caret Down">
+                        <div class="w-60 rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="py-3 px-2 text-sm leading-120">Show All</li>
+                                <li class="py-3 px-2 text-sm leading-120">English</li>
+                                <li class="py-3 px-2 text-sm leading-120 relative">Spanish <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2"></li>
+                                <li class="py-3 px-2 text-sm leading-120">Mandarin</li>
+                                <li class="py-3 px-2 text-sm leading-120">French</li>
+                                <li class="py-3 px-2 text-sm leading-120">ASL (Sign Language)</li>
+                                <li class="py-3 px-2 text-sm leading-120">Bilingual</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter-button flex items-center gap-2 h-12 px-3 py-4 rounded-full bg-bg_grey cursor-pointer relative mb-2">
+                        <img src="/images/special-icon.svg" alt="Special Icon">
+                        <p class="text-base leading-120">Special Accommodations</p>
+                        <img src="/images/caret-down.svg" alt="Caret Down">
+                        <div class="w-60 rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="py-3 px-2 text-sm leading-120">Show All</li>
+                                <li class="py-3 px-2 text-sm leading-120">Allergy-aware</li>
+                                <li class="py-3 px-2 text-sm leading-120 relative">Special needs supported <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2"></li>
+                                <li class="py-3 px-2 text-sm leading-120">Wheelchair accessible</li>
+                                <li class="py-3 px-2 text-sm leading-120">Flexible schedule</li>
+                                <li class="py-3 px-2 text-sm leading-120">Dietary accommodations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-button flex items-center gap-2 relative cursor-pointer">
+                    <p class="text-base leading-120 italic">Nearest</p>
+                    <img src="/images/caret-down.svg" alt="Caret Down">
+                    <div class="w-60 rounded-2xl p-2 absolute top-10 bg-white right-1/4 shadow filter-dropdown">
+                        <ul class="flex flex-col rounded-xl bg-bg_grey">
+                            <li class="py-3 px-2 text-sm leading-120">Highest rating</li>
+                            <li class="py-3 px-2 text-sm leading-120">Lowest price</li>
+                            <li class="py-3 px-2 text-sm leading-120 relative">Nearest <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2"></li>
+                            <li class="py-3 px-2 text-sm leading-120">Soonest availability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--  Filters applied -->
+            <div class="items-center gap-4 mt-4 hidden lg:flex">
+                <div class="flex items-center py-2 pl-4 pr-2 rounded-full bg-accent_skyblue/20 gap-2"><p class="text-sm leading-120">Within 5 km</p> <img src="/images/close-blue.svg" alt="Close Icon"></div>
+                <div class="flex items-center py-2 pl-4 pr-2 rounded-full bg-accent_skyblue/20 gap-2"><p class="text-sm leading-120">All licensed Types</p> <img src="/images/close-blue.svg" alt="Close Icon"></div>
+            </div>
+        </div>
+         <div class="w-full lg:h-880 pt-8 pb-16 relative">
+             <img src="/images/map.svg" alt="Map" class="w-full h-full object-cover rounded-32">
+             <a href="daycare-map-view.html"><img src="/images/sidebar-icon.svg" alt="Sidebar Icon" class="absolute left-6 top-6"></a>
+             <div class="flex-col rounded-32 bg-childcare_card absolute top-1/2 -translate-y-1/2 right-1/4 hidden lg:flex">
+                 <div class="w-full h-240 overflow-hidden relative rounded-32">
+                     <img src="/images/daycare-img4.png" alt="Day Care Center" class="w-full h-full object-cover rounded-32">
+                 </div>
+                 <div class="px-6 py-8 bg-grey flex flex-col gap-4 z-10 rounded-br-32 rounded-bl-32 bg-white">
+                     <h3 class="text-lg leading-120  font-semibold">KGV Outside School Hours Care</h3>
+                     <div class="flex items-center gap-2">
+                         <img src="/images/pink-marker.svg" alt="Pink Map marker">
+                         <p class="text-sm leading-120 font-semibold italic">100m</p>
+                         <span class="w-1 h-1 rounded-full bg-white/10 block"></span>
+                         <p class="text-sm leading-120  opacity-80">15 Cumberland Street, The Rocks, NSW 2000</p>
+                     </div>
+                     <div class="flex items-center gap-2">
+                         <img src="/images/dollar.svg" alt="Pink Map marker">
+                         <p class="text-sm leading-120 font-semibold italic">$50/day</p>
+                         <span class="w-1 h-1 rounded-full bg-white/10 block"></span>
+                         <p class="text-sm leading-120 opacity-80">Daycare Center</p>
+                         <img src="/images/baby-icon.svg" alt="Pink Map marker">
+                         <p class="text-sm leading-120 opacity-80">After School Care</p>
+                     </div>
+                     <div class="flex items-center gap-2">
+                         <img src="/images/language-icon.svg" alt="Pink Map marker">
+                         <p class="text-sm leading-120 opacity-80">English, French</p>
+                         <span class="w-1 h-1 rounded-full bg-white/10 block"></span>
+                         <img src="/images/license-icon.svg" alt="Pink Map marker">
+                         <p class="text-sm leading-120e opacity-80">Licensed</p>
+                     </div>
+                     <div class="flex items-center gap-2">
+                         <img src="/images/wheelchair.svg" alt="Pink Map marker">
+                         <p class="text-sm leading-120 opacity-80">Wheelchair accessible, Allergy-aware meals</p>
+                     </div>
+                     <a href="#" class="popup-button px-8 h-12 rounded-full text-lg lg:text-xl leading-5 bg-accent border transition-all duration-300 border-accent hover:bg-accent_hover font-rocaone flex items-center justify-center" tabindex="0"><p>Apply Now</p></a>
+                 </div>
+             </div>
+         </div>
+         <!-- Toast -->
+         <div class="toast-block p-6 rounded-3xl border border-black/10 w-full lg:w-toast_width absolute top-10 right-0 bg-white shadow overflow-hidden hidden">
+             <div class="flex items-center justify-between mb-4">
+                 <div class="flex items-center gap-4">
+                     <img src="/images/green-check.svg" alt="Green Check" class="w-5">
+                     <h5 class="tetx-lg leading-120 font-semibold">Child Added Successfully</h5>
+                 </div>
+                 <button><img src="/images/close-grey.svg" alt="Close Grey"></button>
+             </div>
+             <p class="text-base leading-120 pl-10">Your child has been successfully added to the list.</p>
+             <span class="h-1 w-full bg-gray-200 absolute bottom-0 left-0 right-0"><em class="h-1 w-full bg-accent absolute bottom-0 left-0"></em></span>
+         </div>
+     </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container xxl:px-0">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-0">
+                <div class="flex flex-col gap-4">
+                    <a href="#" class="text-3xl text-primary_black font-rocaone">WeeWait</a>
+                    <div class="flex items-center gap-1">
+                        <img src="/images/heart.svg" alt="Heart">
+                        <p class="text-lg leading-120">Built by parents, for parents</p>
+                    </div>
+                </div>
+                <ul class="flex gap-4 lg:gap-8 lg:items-center lg:justify-center flex-wrap lg:flex-nowrap">
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">Daycares</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">How it works?</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">FAQ</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">Pricing</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">About us</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">Contact us</a></li>
+                </ul>
+                <div class="flex items-center lg:justify-between gap-2">
+                    <a href="#"><img src="/images/insta.svg" alt="Instagram"></a>
+                    <a href="#"><img src="/images/fb.svg" alt="Facebook"></a>
+                    <a href="#"><img src="/images/linkedin.svg" alt="Linkedin"></a>
+                </div>
+            </div>
+            <hr class="my-6 bg-black/10">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-0 lg:items-center justify-between lg:pb-14 pb-5">
+                <div class="flex gap-4 lg:gap-6 lg:items-center lg:justify-center flex-wrap lg:flex-nowrap">
+                    <a href="#" class="text-sm leading-120 text-primary_black/60">Privacy Policy</a>
+                    <a href="terms-parents.html" class="text-sm leading-120 text-primary_black/60">Terms and conditions for Parents</a>
+                    <a href="terms-daycare.html" class="text-sm leading-120 text-primary_black/60">Terms and conditions for Daycares</a>
+                </div>
+                <div class="flex items-start gap-2">
+                    <p class="text-base leading-120 text-primary_black">Crafted by</p>
+                    <img src="/images/u1core.svg" alt="U1Core Logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+   <script type="module" src="./src/main.js"></script>
+    <script type="module" src="/src/popup.js"></script>
+
+   <!-- Filter Popup -->
+   <div id="filter-popup" class="popup-overlay">
+      <div class="popup-content rounded-32 p-6 gap-6 flex flex-col">
+         <div class="flex items-center justify-between">
+            <h3 class="text-2xl lg:text-textmed leading-120 font-semibold font-rocaone">Response daycare</h3>
+            <button class="popup-close">
+               <img src="/images/popup-close.svg" alt="Close" width="32" height="32">
+            </button>
+         </div>
+          <form action="#" class="flex flex-col gap-6">
+              <div class="flex flex-col gap-1">
+                  <label class="text-xs leading-120 text-black" for="Child-name">Child's Name</label>
+                  <div class="relative">
+                      <select name="Child-name" id="Child-name" class="rounded-xl h-12 focus:outline-none bg-accent_skyblue/10 w-full px-4 appearance-none">
+                          <option value="Olivia Johnson">Olivia Johnson</option>
+                          <option value="John Doe">John Doe</option>
+                          <option value="Alexia">Alexia</option>
+                      </select>
+                      <img src="/images/caret-down.svg" alt="Caret Down" class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  </div>
+              </div>
+              <div class="flex flex-col gap-1">
+                  <label class="text-xs leading-120 text-black" for="sibling">Do they have a sibling enrolled?</label>
+                  <input type="text" id="sibling" class="rounded-xl placeholder:text-black h-12 bg-accent_skyblue/10 w-full px-4 focus:outline-none" placeholder="No">
+              </div>
+              <div class="flex justify-between gap-4">
+                  <button class="flex-1 flex items-center justify-center py-5 h-12 lg:h-14 border border-black rounded-full text-lg lg:text-xl leading-6 hover:bg-accent_hover hover:border-accent font-rocaone transition duration-300">Cancel</button>
+                  <button class="apply-now-button flex-1 flex items-center justify-center py-5 h-12 lg:h-14 border bg-accent hover:bg-accent_hover border-accent rounded-full text-lg lg:text-xl leading-6 font-rocaone transition duration-300 ">Apply</button>
+              </div>
+          </form>
+      </div>
+   </div>
+
+    <!-- Filter Popup -->
+    <div id="filter-popup-mobile" class="popup-overlay">
+        <div class="popup-content rounded-tl-32 rounded-tr-32 px-4 py-6 relative h-[95vh] lg:hidden overflow-y-auto">
+            <div class="h-90% lg:hidden overflow-y-auto gap-6 flex flex-col">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl lg:text-textmed leading-120 font-semibold font-rocaone">Filters</h3>
+                    <button class="popup-close">
+                        <img src="/images/popup-close.svg" alt="Close" width="32" height="32">
+                    </button>
+                </div>
+                <div class="p-4 bg-accent_skyblue/20 flex gap-2 items-center rounded-xl"><img src="/images/map-marker-dark.svg" alt="Map Marker"><p class="text-base leading-120">163 Maplewood Drive, Ottawa</p></div>
+                <hr>
+                <div class="flex flex-col gap-2">
+                    <h4 class="text-lg leading-120 font-semibold">Fee Per Day</h4>
+                    <span class="w-full h-2 rounded-md bg-gray-100 block relative">
+                        <span class="range-slider-fill h-2 absolute top-0 left-0 right-0 rounded-md bg-accent" style="width: 50%;"></span>
+                        <img src="/images/pause.svg" alt="Min" class="range-slider-min absolute top-1/2 -translate-y-1/2 left-10 w-3 cursor-pointer" data-position="left">
+                        <img src="/images/pause.svg" alt="Max" class="range-slider-max absolute top-1/2 -translate-y-1/2 right-10 w-3 cursor-pointer" data-position="right">
+                    </span>
+                    <div class="flex gap-2 justify-between items-center mt-6">
+                        <span class="min-value h-12 bg-[#E7F2F8] text-base leading-120 rounded-xl flex-1 flex items-center justify-center">$ 50</span>
+                        <span class="h-[1px] w-2 bg-gray-200 block"></span>
+                        <span class="max-value h-12 bg-[#E7F2F8] text-base leading-120 rounded-xl flex-1 flex items-center justify-center border-2 border-accent_skyblue">$ 100</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex flex-col gap-2">
+                    <h4 class="text-lg leading-120 font-semibold">Distance</h4>
+                    <div class="flex gap-2 items-center flex-wrap">
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Within 1 km</span>
+                        <span class="py-3 text-sm px-4  rounded-xl leading-120 text-white bg-black">Within 5 km</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Within 10 km</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Up to 20+ km</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex flex-col gap-2">
+                    <h4 class="text-lg leading-120 font-semibold">Licensed</h4>
+                    <div class="flex gap-2 items-center flex-wrap">
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Licensed only</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Unlicensed</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex flex-col gap-2">
+                    <h4 class="text-lg leading-120 font-semibold">Service Type </h4>
+                    <div class="flex gap-2 items-center flex-wrap">
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Full time care</span>
+                        <span class="py-3 text-sm px-4 bg-black rounded-xl leading-120 text-white">Part time care</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Drop-in care</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Preschool</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Infant care</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex flex-col gap-2">
+                    <h4 class="text-lg leading-120 font-semibold">Facility type </h4>
+                    <div class="flex gap-2 items-center flex-wrap">
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Home Daycare</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Daycare Center</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex flex-col gap-2">
+                    <h4 class="text-lg leading-120 font-semibold">Languages</h4>
+                    <div class="flex gap-2 items-center flex-wrap">
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">English</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Spanish</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Mandarin</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">French</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">ASL (Sign Language)</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Bilingual</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="flex flex-col gap-2">
+                    <h4 class="text-lg leading-120 font-semibold">Special Accommodations</h4>
+                    <div class="flex gap-2 items-center flex-wrap">
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Allergy-aware</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Special needs supported</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Wheelchair accessible</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Flexible schedule</span>
+                        <span class="py-3 text-sm px-4 bg-bg_grey rounded-xl leading-120 text-black">Dietary accommodations</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between gap-4 fixed bottom-10 left-4 right-4 bg-white">
+                <button class="flex-1 flex items-center justify-center py-5 h-12 lg:h-14 border border-black rounded-full text-lg lg:text-xl leading-6 hover:bg-accent_hover hover:border-accent font-rocaone transition duration-300 bg-white">Reset</button>
+                <button class="apply-now-button flex-1 flex items-center justify-center py-5 h-12 lg:h-14 border bg-accent hover:bg-accent_hover border-accent rounded-full text-lg lg:text-xl leading-6 font-rocaone transition duration-300 ">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sort  Popup -->
+    <div id="sort-popup-mobile" class="popup-overlay">
+        <div class="popup-content rounded-tl-32 rounded-tr-32 px-4 py-6 relative lg:hidden">
+            <div class="lg:hidden overflow-y-auto gap-6 flex flex-col">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl lg:text-textmed leading-120 font-semibold font-rocaone">Sort by</h3>
+                    <button class="popup-close">
+                        <img src="/images/popup-close.svg" alt="Close" width="32" height="32">
+                    </button>
+                </div>
+            </div>
+            <div class="mt-6 flex flex-col p-4 bg-bg_grey rounded-2xl mb-20">
+                <div class="flex flex-col">
+                    <p class="p-3 text-base leading-120 border-b border-black/10">Highest rating</p>
+                    <p class="p-3 text-base leading-120 border-b border-black/10">Lowest price</p>
+                    <p class="p-3 text-base leading-120 border-b border-black/10 relative">Nearest <img src="/images/blue-check.svg" class="absolute right-4 -top-1/2 -translate-y-1/2" alt="Check"> </p>
+                    <p class="p-3 text-base leading-120 border-b border-black/10">Shortest waitlists </p>
+                </div>
+            </div>
+            <div class="flex justify-between gap-4 absolute bottom-10 left-4 right-4">
+                <button class="flex-1 flex items-center justify-center py-5 h-12 lg:h-14 border border-black rounded-full text-lg lg:text-xl leading-6 hover:bg-accent_hover hover:border-accent font-rocaone transition duration-300 bg-white">Reset</button>
+                <button class="apply-now-button flex-1 flex items-center justify-center py-5 h-12 lg:h-14 border bg-accent hover:bg-accent_hover border-accent rounded-full text-lg lg:text-xl leading-6 font-rocaone transition duration-300 ">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Popup -->
+    <div id="search-popup-mobile" class="popup-overlay">
+        <div class="popup-content rounded-none px-4 py-6 relative lg:hidden h-[95vh]">
+            <div class="h-90% lg:hidden overflow-y-auto gap-4 flex flex-col mb-24">
+                <div class="flex items-center justify-between gap-4 relative">
+                    <button class="popup-close relative top-0 right-0">
+                        <img src="/images/arrow-left-grey.svg" alt="Close" width="32" height="32">
+                    </button>
+                    <div class="relative w-full">
+                        <input type="text" placeholder="Search" class="h-12 focus:outline-none text-black/80 placeholder:text-black/80 rounded-full py-4 px-12 text-base leading-120 bg-accent_skyblue/10 w-full">
+                        <img src="/images/search.svg" alt="Search Icon" class="absolute left-6 top-1/2 transform -translate-y-1/2 w-4">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <small class="text-base leading-120">Recent searches:</small>
+                    <div class="flex items-start gap-5 flex-col">
+                        <div class="flex items-center gap-6">
+                            <img src="/images/history.svg" alt="History">
+                            <p class="text-base leading-120 font-semibold">KGV Outside School Hours Care</p>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <img src="/images/history.svg" alt="History">
+                            <p class="text-base leading-120 font-semibold">Little Sprouts Academy</p>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <img src="/images/history.svg" alt="History">
+                            <p class="text-base leading-120 font-semibold">Happy Hearts Childcare</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between gap-4 absolute bottom-10 left-4 right-4">
+                <button class="apply-now-button flex-1 flex items-center justify-center py-5 h-12 lg:h-14 border bg-accent hover:bg-accent_hover border-accent rounded-full text-lg lg:text-xl leading-6 font-rocaone transition duration-300 ">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- childcare  Popup -->
+    <div id="child-popup-mobile" class="popup-overlay active">
+        <div class="popup-content rounded-tl-32 rounded-tr-32 px-4 py-6 relative lg:hidden">
+            <div class="lg:hidden overflow-y-auto gap-6 flex flex-col">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl lg:text-textmed leading-120 font-semibold font-rocaone">KGV Outside School Hours Care</h3>
+                    <button class="popup-close">
+                        <img src="/images/popup-close.svg" alt="Close" width="32" height="32">
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col rounded-tl-32 rounded-tr-32 bg-childcare_card mt-8">
+                <div class="w-full h-240 overflow-hidden relative rounded-32">
+                    <img src="/images/daycare-img4.png" alt="Day Care Center" class="w-full h-full object-cover rounded-32">
+                </div>
+                <div class="py-8 bg-grey flex flex-col gap-4 z-10 bg-white">
+                    <div class="flex items-center gap-2">
+                        <img src="/images/pink-marker.svg" alt="Pink Map marker">
+                        <p class="text-sm leading-120 font-semibold italic">100m</p>
+                        <span class="w-1 h-1 rounded-full bg-white/10 block"></span>
+                        <p class="text-sm leading-120  opacity-80">15 Cumberland Street, The Rocks, NSW 2000</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <img src="/images/dollar.svg" alt="Pink Map marker">
+                        <p class="text-sm leading-120 font-semibold italic">$50/day</p>
+                        <span class="w-1 h-1 rounded-full bg-white/10 block"></span>
+                        <p class="text-sm leading-120 opacity-80">Daycare Center</p>
+                        <img src="/images/baby-icon.svg" alt="Pink Map marker">
+                        <p class="text-sm leading-120 opacity-80">After School Care</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <img src="/images/language-icon.svg" alt="Pink Map marker">
+                        <p class="text-sm leading-120 opacity-80">English, French</p>
+                        <span class="w-1 h-1 rounded-full bg-white/10 block"></span>
+                        <img src="/images/license-icon.svg" alt="Pink Map marker">
+                        <p class="text-sm leading-120e opacity-80">Licensed</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <img src="/images/wheelchair.svg" alt="Pink Map marker">
+                        <p class="text-sm leading-120 opacity-80">Wheelchair accessible, Allergy-aware meals</p>
+                    </div>
+                    <a href="#" class="popup-button px-8 h-12 rounded-full text-lg lg:text-xl leading-5 bg-accent border transition-all duration-300 border-accent hover:bg-accent_hover font-rocaone flex items-center justify-center" tabindex="0"><p>Apply Now</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./src/carousel.css">
+    <link rel="stylesheet" href="./src/scrollbar.css">
+    <title>WeeWait</title>
+    <link href="./src/input.css" rel="stylesheet">
+    <!-- Vite script will be injected here automatically during development -->
+</head>
+<body class="font-figtree">
+    <header class="pt-4 pb-3 md:pt-10 md:pb-4 font-figtree">
+        <div class="container px-4 flex items-center justify-between">
+            <a href="/"><img src="/images/logo.svg" width="135" alt="Wee Wait"></a>
+
+            <!-- Hamburger Menu Button (visible on mobile) -->
+            <button id="hamburger-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 z-30">
+                <span class="block w-6 h-0.5 bg-primary_black transition-all"></span>
+                <span class="block w-6 h-0.5 bg-primary_black transition-all"></span>
+                <span class="block w-6 h-0.5 bg-primary_black transition-all"></span>
+            </button>
+
+            <!-- Navigation (hidden on mobile) -->
+            <nav id="main-nav" class="fixed md:static top-0 right-0 bottom-0 left-0 bg-white md:bg-transparent flex md:flex-row items-center justify-center z-20 transform translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out md:transition-none">
+                <ul class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                    <li><a href="/daycare-list-view" class="text-primary_black text-lg leading-6">Daycares</a></li>
+                    <li><a href="/how-it-works" class="text-primary_black text-lg leading-6">How it works?</a></li>
+                    <li><a href="/faq" class="text-primary_black text-lg leading-6">FAQ</a></li>
+                    <li><a href="/pricing" class="text-primary_black text-lg leading-6">Pricing</a></li>
+                    <li><a href="about.html" class="text-primary_black text-lg leading-6">About us</a></li>
+                    <li><a href="contact.html" class="text-primary_black text-lg leading-6">Contact us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Location and Login (hidden on mobile, shown in mobile menu) -->
+            <div class="hidden md:flex gap-4 items-center">
+                <div class="md:hidden xxl:flex items-center p-2 cursor-pointer rounded-full border border-primary_black/20 gap-2"><img src="/images/map-marker.svg" alt="Map Marker"><p class="text-base leading-5">163 Maplewood Drive, Ottawa</p><img src="/images/caret-down.svg" alt="Angle down" class="ml-3"></div>
+                <a href="#" class="py-3 h-12 flex items-center justify-center px-6 border text-lg leading-3 border-primary_black rounded-full transition-all duration-300 hover:bg-black hover:text-white hover:border-black font-rocaone">Log in</a>
+            </div>
+
+            <!-- Mobile menu location and login (visible inside mobile menu) -->
+            <div id="mobile-menu-items" class="fixed bottom-0 left-0 right-0 top-0 bg-white flex flex-col items-center justify-center gap-8 z-10 transform translate-x-full transition-transform duration-300 ease-in-out">
+                <div class="flex flex-col items-center gap-8 w-full px-4">
+                    <div class="flex items-center p-2 cursor-pointer rounded-full border border-primary_black/20 gap-2 w-full justify-center"><img src="/images/map-marker.svg" alt="Map Marker"><p class="text-base leading-5">163 Maplewood Drive, Ottawa</p><img src="/images/caret-down.svg" alt="Angle down" class="ml-3"></div>
+                    <a href="#" class="py-3 w-full flex items-center justify-center px-6 border text-lg leading-6 border-primary_black rounded-full transition-all duration-300 hover:bg-black hover:text-accent hover:border-primary_black">Log in</a>
+                </div>
+            </div>
+        </div>
+    </header>
+     <main>
+         <!-- Steps to join -->
+         <section class="lg:pb-30">
+             <div class="container flex flex-col gap-8 justify-center items-center text-center pt-6 pb-10 lg:py-28">
+                 <h1 class="text-mobile lg:text-6xl font-figtree leading-120 lg:leading-110 font-semibold">How it <b class="font-rocaone font-normal text-primary relative italic">Works
+                     <img src="/images/how-it-works-curve.svg" alt="Underline" class="absolute -bottom-2 lg:-bottom-2 left-0 right-0"></b></h1>
+                 <p class="text-base leading-120 lg:text-xl lg:leading-tight">Here’s how WeeWait takes the stress out of daycare applications.</p>
+             </div>
+             <div class="container flex-col xxl:px-0 flex lg:flex-row items-center gap-6 lg:gap-36 mb-12 lg:mb-16 justify-between">
+                 <div class="flex-60">
+                     <img src="/images/signup-img.svg" alt="Signup Image">
+                 </div>
+                 <div class="flex flex-col items-start flex-40">
+                     <h2 class="text-2xl lg:text-5xl leading-120 font-semibold mb-6">Create Your Profile</h2>
+                     <p class="text-lg leading-120 lg:mb-12 paragraph_width w-full">Tell us about your child and daycare preferences — it only takes a few minutes.</p>
+                 </div>
+             </div>
+             <div class="container flex-col-reverse xxl:px-0 flex items-center gap-6 lg:gap-36 mb-12 lg:mb-16 lg:flex-row">
+                 <div class="flex flex-col items-start flex-40">
+                     <h2 class="text-2xl lg:text-5xl leading-120 font-semibold mb-6">Select Daycares</h2>
+                     <p class="text-lg leading-120 lg:mb-12 paragraph_width w-full">Browse our catalog and choose the centers you’re interested in.</p>
+                 </div>
+                 <div class="flex-60">
+                     <img src="/images/select-daycares-img.svg" alt="Signup Image">
+                 </div>
+             </div>
+             <div class="container xxl:px-0 flex items-center gap-6 lg:gap-36 mb-12 lg:mb-16 flex-col lg:flex-row justify-between">
+                 <div class="flex-60">
+                     <img src="/images/send-application.svg" alt="Signup Image">
+                 </div>
+                 <div class="flex flex-col items-start flex-40">
+                    <div class="flex flex-row-reverse lg:flex-col items-start">
+                        <span class="py-2 max-w-36 w-full text-center px-4 lg:py-3 lg:px-4 bg-accent_yellow rounded-full text-sm leading-120 italic mb-6 font-semibold">Concierge Plan</span>
+                        <h2 class="text-2xl lg:text-5xl leading-120 font-semibold mb-6">We Send the Applications</h2>
+                    </div>
+                     <p class="text-lg leading-120 lg:mb-12 paragraph_width w-full">WeeWait submits your info to all selected centers and notifies you when a spot opens.</p>
+                 </div>
+             </div>
+             <div class="container flex-col-reverse xxl:px-0 flex items-center gap-6 lg:gap-36 mb-12 lg:mb-16 lg:flex-row">
+                 <div class="flex flex-col items-start flex-40">
+                     <h2 class="text-2xl lg:text-5xl leading-120 font-semibold mb-6">Be Notified of Openings</h2>
+                     <p class="text-lg leading-120 lg:mb-12 paragraph_width w-full">You’ll receive real-time notifications the moment a daycare updates your status or offers a spot.</p>
+                 </div>
+                 <div class="flex-60">
+                     <img src="/images/good-news.svg" alt="Signup Image">
+                 </div>
+             </div>
+             <div class="container xxl:px-0 flex items-center gap-6 lg:gap-36 flex-col lg:flex-row justify-between">
+                 <div class="flex-60">
+                     <img src="/images/monthly-waitlist.svg" alt="Signup Image">
+                 </div>
+                 <div class="flex flex-col items-start flex-40">
+                     <div class="flex flex-row-reverse lg:flex-col items-start">
+                         <span class="py-2 max-w-36 w-full text-center px-4 lg:py-3 lg:px-4 bg-accent_yellow rounded-full text-sm leading-120 italic mb-6 font-semibold">Concierge Plan</span>
+                         <h2 class="text-2xl lg:text-5xl leading-120 font-semibold mb-6">Monthly Waitlist Update</h2>
+                     </div>
+                     <p class="text-lg leading-120 lg:mb-12 paragraph_width w-full">Track your progress with monthly updates that show how your position on each waitlist is changing.</p>
+                 </div>
+             </div>
+         </section>
+         <!-- Ready to simplify your daycare search? -->
+         <section class="pb-40 pt-20 lg:py-40 relative">
+             <div class="container ">
+                 <div class="max-w-xl mx-auto flex items-center justify-center flex-col text-center">
+                     <img src="/images/sunny-cloudy.svg" alt="Sunny Cloudy" class="w-32 lg:w-60 mb-8">
+                     <h2 class="text-2xl lg:text-5xl leading-120 font-semibold text-primary_black mb-4 lg:mb-6">Ready to simplify your daycare search?</h2>
+                     <p class="text-lg leading-120 mb-8 lg:mb-12  mx-auto">Join families across Canada using WeeWait to apply faster, smarter, and stress-free.</p>
+                     <a href="#" class="flex w-full lg:w-40 h-14 items-center justify-center font-rocaone text-xl leading-6 rounded-full bg-accent hover:bg-accent_hover transition-all duration-300"><p>Get Started</p></a>
+                 </div>
+             </div>
+             <img src="/images/small-cloud.svg" class="w-20 lg:w-44 absolute top-0 lg:top-1/2 lg:-translate-y-1/2 left-0" alt="Cloud">
+             <img src="/images/cloud-2.svg" class="w-20 lg:w-56 absolute top-0 lg:top-auto lg:bottom-0 right-0" alt="Cloud">
+         </section>
+         <!-- Why Parents Choose WeeWait -->
+         <section class="lg:pb-40 pb-16 relative">
+             <div class="container xxl:px-0">
+                 <div class="parents-container mx-auto relative">
+                     <h2 class="text-textmed lg:text-6xl leading-110 font-semibold text-center">Why Parents Choose <br> <b class="font-rocaone text-primary font-normal">WeeWait</b></h2>
+                    <div class="grid grid-cols-12 gap-4 mt-12">
+                        <div class="col-span-12 md:col-span-6 p-6 lg:p-10 rounded-32 bg-bg_grey relative overflow-hidden">
+                            <img src="/images/choose-icon1.svg" class="mb-8" alt="Choose Icon">
+                            <h4 class="text-xl leading-120 text-primary_black mb-2 font-semibold">Save Time</h4>
+                            <p class="text-lg leading-120 text-primary_black/80">Apply to multiple daycares at once - no repeated forms or calls.</p>
+                            <img src="/images/choose-bg1.svg" class="absolute top-0 left-0" alt="Cloud">
+                        </div>
+                        <div class="col-span-12 md:col-span-6 p-6 lg:p-10 rounded-32 bg-bg_grey relative overflow-hidden">
+                            <img src="/images/choose-icon2.svg" class="mb-8" alt="Choose Icon">
+                            <h4 class="text-xl leading-120 text-primary_black mb-2 font-semibold">Stay Informed</h4>
+                            <p class="text-lg leading-120 text-primary_black/80">Get real-time updates when your status changes
+                                or a spot opens.</p>
+                            <img src="/images/choose-bg2.svg" class="absolute top-0 right-0" alt="Cloud">
+                        </div>
+                        <div class="col-span-12 md:col-span-6 p-6 lg:p-10 rounded-32 bg-bg_grey relative overflow-hidden">
+                            <img src="/images/choose-icon3.svg" class="mb-8" alt="Choose Icon">
+                            <h4 class="text-xl leading-120 text-primary_black mb-2 font-semibold">Reduce Stress</h4>
+                            <p class="text-lg leading-120 text-primary_black/80">Get real-time updates when your status changes or a spot opens.</p>
+                            <img src="/images/choose-bg3.svg" class="absolute bottom-0 left-0" alt="Cloud">
+                        </div>
+                        <div class="col-span-12 md:col-span-6 p-6 lg:p-10 rounded-32 bg-bg_grey relative overflow-hidden">
+                            <img src="/images/choose-icon4.svg" class="mb-8" alt="Choose Icon">
+                            <h4 class="text-xl leading-120 text-primary_black mb-2 font-semibold">All in One Place</h4>
+                            <p class="text-lg leading-120 text-primary_black/80">Track your applications, invitations, and responses in one clear dashboard.</p>
+                            <img src="/images/choose-bg4.svg" class="absolute bottom-0 right-0" alt="Cloud">
+                        </div>
+                    </div>
+                     <div class="absolute -top-32 lg:-top-16 right-0 ml-auto">
+                         <img src="/images/swan.svg" class="w-3/5 lg:w-full h-full ml-auto" alt="Swan">
+                     </div>
+                 </div>
+                 <img src="/images/cloud-1.svg" class="w-36 lg:w-64 absolute -top-28 lg:-top-16 left-0" alt="Cloud">
+             </div>
+         </section>
+     </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container xxl:px-0">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-0">
+                <div class="flex flex-col gap-4">
+                    <a href="#" class="text-3xl text-primary_black font-rocaone">WeeWait</a>
+                    <div class="flex items-center gap-1">
+                        <img src="/images/heart.svg" alt="Heart">
+                        <p class="text-lg leading-120">Built by parents, for parents</p>
+                    </div>
+                </div>
+                <ul class="flex gap-4 lg:gap-8 lg:items-center lg:justify-center flex-wrap lg:flex-nowrap">
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">Daycares</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">How it works?</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">FAQ</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">Pricing</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">About us</a></li>
+                    <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">Contact us</a></li>
+                </ul>
+                <div class="flex items-center lg:justify-between gap-2">
+                    <a href="#"><img src="/images/insta.svg" alt="Instagram"></a>
+                    <a href="#"><img src="/images/fb.svg" alt="Facebook"></a>
+                    <a href="#"><img src="/images/linkedin.svg" alt="Linkedin"></a>
+                </div>
+            </div>
+            <hr class="my-6 bg-black/10">
+            <div class="flex flex-col lg:flex-row gap-6 lg:gap-0 lg:items-center justify-between lg:pb-14 pb-5">
+                <div class="flex gap-4 lg:gap-6 lg:items-center lg:justify-center flex-wrap lg:flex-nowrap">
+                    <a href="#" class="text-sm leading-120 text-primary_black/60">Privacy Policy</a>
+                    <a href="terms-parents.html" class="text-sm leading-120 text-primary_black/60">Terms and conditions for Parents</a>
+                    <a href="terms-daycare.html" class="text-sm leading-120 text-primary_black/60">Terms and conditions for Daycares</a>
+                </div>
+                <div class="flex items-start gap-2">
+                    <p class="text-base leading-120 text-primary_black">Crafted by</p>
+                    <img src="/images/u1core.svg" alt="U1Core Logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+   <script type="module" src="./src/main.js"></script>
+</body>
+</html>

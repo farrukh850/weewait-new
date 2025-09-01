@@ -1,0 +1,48 @@
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, white 20%, transparent);
+}
+
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, white 20%, transparent);
+}
+
+.marquee-content {
+  display: inline-flex;
+  animation: marquee 15s linear infinite;
+  gap: 56px;
+  position: relative;
+}
+
+/* Duplicate content for seamless loop */
+.marquee-content img {
+  flex-shrink: 0;
+}

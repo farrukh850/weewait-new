@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/how-it-works", "destination": "/how-it-works.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/thank-you", "destination": "/thank-you.html" },
+    { "source": "/terms-daycare", "destination": "/terms-daycare.html" },
+    { "source": "/terms-parents", "destination": "/terms-parents.html" },
+    { "source": "/404", "destination": "/404.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/daycare-list-view", "destination": "/daycare-list-view.html" },
+    { "source": "/daycare-map-view", "destination": "/daycare-map-view.html" },
+    { "source": "/daycare-map-view-sidebar-hide", "destination": "/daycare-map-view-sidebar-hide.html" },
+    { "source": "/:path*", "destination": "/index.html" }
+  ]
+}

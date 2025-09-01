@@ -1,0 +1,82 @@
+/* Popup styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-content {
+  background-color: white;
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  max-width: 560px;
+  width: 100%;
+}
+
+/* Safari height fix for mobile devices */
+#filter-popup-mobile .popup-content {
+  /* Fix for Safari viewport height issue on mobile */
+  height: 95vh; /* Fallback for non-Safari browsers */
+  height: -webkit-fill-available; /* For Safari on iOS */
+  max-height: -webkit-fill-available; /* Ensure it doesn't exceed viewport */
+}
+
+/* This targets Safari only */
+@supports (-webkit-touch-callout: none) {
+  #filter-popup-mobile .popup-content {
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+}
+
+.popup-overlay.active .popup-content {
+  transform: translateY(0);
+}
+
+/*.popup-close {*/
+/*  position: absolute;*/
+/*  top: 16px;*/
+/*  right: 16px;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/* Toast styles */
+/*.toast-block {*/
+/*  display: none;*/
+/*  position: fixed;*/
+/*  bottom: 20px;*/
+/*  right: 20px;*/
+/*  z-index: 1000;*/
+/*  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);*/
+/*  opacity: 0;*/
+/*  transition: all 0.3s ease;*/
+/*  max-width: 360px;*/
+/*  width: 100%;*/
+/*  height: auto;*/
+/*  background-color: white;*/
+/*  border-radius: 24px;*/
+/*  border: 1px solid rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+.toast-block em {
+  transition: width 5s linear;
+}
