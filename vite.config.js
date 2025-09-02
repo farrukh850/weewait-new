@@ -25,7 +25,7 @@ export default defineConfig({
         daycareListView: resolve(__dirname, 'daycare-list-view.html'),
         daycareMapView: resolve(__dirname, 'daycare-map-view.html'),
         daycareMapViewSidebarHide: resolve(__dirname, 'daycare-map-view-sidebar-hide.html'),
-        login: resolve(__dirname, '/login-register/login.html'),
+        login: resolve(__dirname, '/login.html'),
         login_error: resolve(__dirname, '/login-register/login-error.html'),
         restore_password: resolve(__dirname, '/login-register/restore-password.html'),
         verification_code: resolve(__dirname, '/login-register/verification-code.html'),
