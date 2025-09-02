@@ -6,6 +6,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/signup", "destination": "/signup.html" },
     { "source": "/add-photo-daycare", "destination": "/add-photo-daycare.html" },
     { "source": "/about-daycare", "destination": "/about-daycare.html" },
     { "source": "/account-information", "destination": "/account-information.html" },
@@ -16,8 +18,6 @@
     { "source": "/verification-code", "destination": "/verification-code.html" },
     { "source": "/restore-password", "destination": "/restore-password.html" },
     { "source": "/login-error", "destination": "/login-error.html" },
-    { "source": "/login", "destination": "/login.html" },
-    { "source": "/signup", "destination": "/signup.html" },
     { "source": "/set-new-password", "destination": "/set-new-password.html" },
     { "source": "/pricing", "destination": "/pricing.html" },
     { "source": "/faq", "destination": "/faq.html" },
@@ -31,6 +31,6 @@
     { "source": "/daycare-list-view", "destination": "/daycare-list-view.html" },
     { "source": "/daycare-map-view", "destination": "/daycare-map-view.html" },
     { "source": "/daycare-map-view-sidebar-hide", "destination": "/daycare-map-view-sidebar-hide.html" },
-    { "source": "/:path*", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/404.html" }
   ]
 }
