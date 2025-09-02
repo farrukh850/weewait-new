@@ -29,7 +29,7 @@
                 <div class="flex flex-col items-start w-full max-xxl:h-3/4 justify-start xxl:justify-center xl:overflow-y-auto">
                     <div onclick=(history.back()) class="flex items-center cursor-pointer"><img src="/images/back-arrow.svg" class="w-4" alt="Arrow Left"><p class="text-sm leading-120 underline">Back</p></div>
                     <h1 class="text-textmed leading-120 font-rocaone mt-8">About the Daycare</h1>
-                    <form action="#" class="gap-4 flex flex-col mt-8">
+                    <form action="#" class="gap-4 flex flex-col mt-8 w-full">
                         <div class="flex items-center gap-4">
                             <div class="flex flex-col items-start gap-2 flex-1">
                                 <label for="room-type" class="pl-4 text-xs leading-120 text-black/80">Room №1 Type</label>
@@ -57,68 +57,110 @@
                             </div>
                         </div>
                         <div onclick=(history.back()) class="flex items-center"><img src="/images/back-arrow.svg" class="w-4" alt="Arrow Left"><p class="text-sm leading-120 underline">Add Room</p></div>
-                        <div class="flex flex-col items-start gap-2 flex-1">
-                            <label for="facility-type" class="pl-4 text-xs leading-120 text-black/80">Facility type</label>
-                            <select name="facility-type" id="facility-type" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80">
-                                <option value="Toddler room" selected>Select Facility type</option>
-                                <option value="Toddler room">Facility Type 1 </option>
-                                <option value="Toddler room">Facility Type 2 </option>
-                                <option value="Toddler room">Facility Type 3 </option>
-                            </select>
+
+                        <div class="flex flex-col gap-2 flex-1">
+                            <label class="pl-4 text-xs leading-120 text-black/80">Facility type</label>
+                            <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                                <p class="text-base leading-120">Facility type</p>
+                                <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(180deg); transition: transform 0.3s;">
+                                <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 1; max-height: 220px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto;">
+                                    <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                        <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Facility Type 1 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                        <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Facility Type 2 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                        <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Facility Type 3 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex flex-col items-start gap-2 flex-1">
-                            <label for="service-type" class="pl-4 text-xs leading-120 text-black/80">Service type</label>
-                            <select name="service-type" id="service-type" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80">
-                                <option value="Toddler room" selected>Select Facility type</option>
-                                <option value="Toddler room">Facility Type 1 </option>
-                                <option value="Toddler room">Facility Type 2 </option>
-                                <option value="Toddler room">Facility Type 3 </option>
-                            </select>
+                        <div class="flex flex-col gap-2 flex-1">
+                            <label class="pl-4 text-xs leading-120 text-black/80">Service type</label>
+                            <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                                <p class="text-base leading-120">Service type</p>
+                                <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(180deg); transition: transform 0.3s;">
+                                <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 1; max-height: 220px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto;">
+                                    <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                        <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Service Type 1 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                        <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Service Type 2 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                        <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Service Type 3 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex flex-col items-start gap-2 flex-1">
-                            <label for="license-type" class="pl-4 text-xs leading-120 text-black/80">License Status</label>
-                            <select name="license-type" id="license-type" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80">
-                                <option value="Toddler room" selected>Select License Status</option>
-                                <option value="Toddler room">License Type 1 </option>
-                                <option value="Toddler room">License Type 2 </option>
-                                <option value="Toddler room">License Type 3 </option>
-                            </select>
+                        <div class="flex flex-col gap-2 flex-1">
+                            <label class="pl-4 text-xs leading-120 text-black/80">License Status</label>
+                            <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                            <p class="text-base leading-120">License Status</p>
+                            <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(180deg); transition: transform 0.3s;">
+                            <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 1; max-height: 220px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto;">
+                                <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">License Status 1 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">License Status 2 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">License Status 3 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="flex flex-col items-start gap-2 flex-1">
-                            <label for="language-spoken" class="pl-4 text-xs leading-120 text-black/80">Languages Spoken</label>
-                            <select name="language-spoken" id="language-spoken" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80">
-                                <option value="Toddler room" selected>Select Languages Spoken</option>
-                                <option value="Toddler room">English </option>
-                                <option value="Toddler room">French </option>
-                                <option value="Toddler room">German</option>
-                            </select>
                         </div>
-                        <div class="flex flex-col items-start gap-2 flex-1">
-                            <label for="special-needs" class="pl-4 text-xs leading-120 text-black/80">Special Needs Accommodations</label>
-                            <select name="special-needs" id="special-needs" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80">
-                                <option value="Toddler room" selected>Select Special Needs Accommodations</option>
-                                <option value="Accomodation 1">Accomodation 1 </option>
-                                <option value="Accomodation 2">Accomodation 2 </option>
-                                <option value="Accomodation 3">Accomodation 3</option>
-                            </select>
+                        <div class="flex flex-col gap-2 flex-1">
+                            <label class="pl-4 text-xs leading-120 text-black/80">Languages Spoken</label>
+                            <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                            <p class="text-base leading-120">Languages Spoken</p>
+                            <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(180deg); transition: transform 0.3s;">
+                            <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 1; max-height: 220px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto;">
+                                <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">English <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Spanish <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Mandarin <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">French <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">ASL (Sign Language) <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Bilingual <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="flex flex-col items-start gap-2 flex-1">
-                            <label for="other-special-needs" class="pl-4 text-xs leading-120 text-black/80">Other Special Needs Accommodations</label>
-                            <select name="other-special-needs" id="other-special-needs" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80">
-                                <option value="Toddler room" selected>Select Other Special Needs Accomodations</option>
-                                <option value="Other Accomodation 1">Other Accomodation 1 </option>
-                                <option value="Other Accomodation 2">Other Accomodation 2 </option>
-                                <option value="Other Accomodation 3">Other Accomodation 3</option>
-                            </select>
                         </div>
-                        <div class="flex flex-col items-start gap-2 flex-1">
-                            <label for="food-allergies" class="pl-4 text-xs leading-120 text-black/80">Food Allergies/Diet Accommodations</label>
-                            <select name="food-allergies" id="food-allergies" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80">
-                                <option value="Toddler room" selected>Select Food Allergies/Diet Accommodations</option>
-                                <option value="Diet 1">Diet 1 </option>
-                                <option value="Diet 2">Diet 2 </option>
-                                <option value="Diet 3">Diet 3</option>
-                            </select>
+                        <div class="flex flex-col gap-2 flex-1">
+                            <label class="pl-4 text-xs leading-120 text-black/80">Special Needs Accommodations</label>
+                            <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                            <p class="text-base leading-120">Special Needs Accommodations</p>
+                            <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(180deg); transition: transform 0.3s;">
+                            <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 1; max-height: 220px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto;">
+                                <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 1 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 2 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 3 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 4 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="flex flex-col gap-2 flex-1">
+                            <label class="pl-4 text-xs leading-120 text-black/80">Other Special Needs Accommodations</label>
+                            <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                            <p class="text-base leading-120">Select Other Special Needs Accomodations</p>
+                            <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(180deg); transition: transform 0.3s;">
+                            <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 1; max-height: 220px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto;">
+                                <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 1 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 2 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 3 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 4 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="flex flex-col gap-2 flex-1">
+                            <label class="pl-4 text-xs leading-120 text-black/80">Food Allergies/Diet Accommodations</label>
+                            <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                            <p class="text-base leading-120">Select Food Allergies/Diet Accommodations</p>
+                            <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(180deg); transition: transform 0.3s;">
+                            <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 1; max-height: 220px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto;">
+                                <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 1 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 2 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 3 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                    <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Option 4 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                </ul>
+                            </div>
+                        </div>
                         </div>
                         <input type="submit" class="h-14 mb-10 xxl:mb-0 w-full bg-accent hover:bg-accent_hover transition-all duration-300 rounded-full font-rocaone text-xl leading-6 cursor-pointer" value="Continue">
                     </form>
@@ -131,5 +173,6 @@
     </div>
 </div>
 <script type="module" src="../src/password.js"></script>
+<script type="module" src="../src/custom-select.js"></script>
 </body>
 </html>
