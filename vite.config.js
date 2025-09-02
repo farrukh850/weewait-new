@@ -33,6 +33,7 @@ export default defineConfig({
         confirm_email: resolve(__dirname, '/login-register/confirm-email.html'),
         invitation_code: resolve(__dirname, '/login-register/invitation-code.html'),
         signup_daycare: resolve(__dirname, '/login-register/signup-daycare.html'),
+        signup: resolve(__dirname, '/login-register/signup.html'),
         account_information: resolve(__dirname, '/login-register/account-information.html'),
         add_photo_daycare: resolve(__dirname, '/login-register/add-photo-daycare.html'),
         about_daycare: resolve(__dirname, '/login-register/about-daycare.html')
