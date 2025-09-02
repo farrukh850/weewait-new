@@ -28,6 +28,7 @@ export default defineConfig({
         login: resolve(__dirname, '/login-register/login.html'),
         login_error: resolve(__dirname, '/login-register/login-error.html'),
         restore_password: resolve(__dirname, '/login-register/restore-password.html'),
+        set_new_password: resolve(__dirname, '/login-register/set-new-password.html'),
         verification_code: resolve(__dirname, '/login-register/verification-code.html'),
         verification_code_error: resolve(__dirname, '/login-register/verification-code-error.html'),
         confirm_email: resolve(__dirname, '/login-register/confirm-email.html'),
