@@ -8,6 +8,7 @@
   --color-primary: #084DA7 !important;
   --color-primary_black: #1E1E1E !important;
   --color-accent: #FFA9CF !important;
+  --color-accent_red: #D84545 !important;
   --color-accent_hover: #F27EB1 !important;
   --color-accent_skyblue: #7DADFE !important;
   --color-accent_yellow: #FEEA94 !important;
@@ -15,6 +16,8 @@
   --color-childcare_card: #F8FAFB !important;
   --color-feedbacks_bg: #084DA7 !important;
   --color-input_bg: #E7F2F8 !important;
+  --color-input_error: #FDDDDD !important;
+  --color-terms_popup: #EFEFEF !important;
 
   /* Font families - v4.1 compatible */
   --font-family-figtree: Figtree, sans-serif;
@@ -403,4 +406,10 @@ button {
   .xxl\:left-0 {
     left: 0;
   }
+}
+@media (max-width: 1600px) {
+    .account-information{
+      max-height: 75%;
+      overflow-y: auto;
+    }
 }

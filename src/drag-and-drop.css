@@ -1,0 +1,29 @@
+/* Custom styles for drag and drop functionality */
+.file-drop-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Custom image grid layout */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+/* Ensures drag over effect is visible */
+#drop-area.drag-over {
+  border-color: var(--color-accent_skyblue);
+  background-color: color-mix(in srgb, var(--color-accent_skyblue) 10%, transparent);
+}

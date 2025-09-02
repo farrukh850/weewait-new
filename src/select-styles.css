@@ -1,0 +1,26 @@
+/* Custom styling for select arrows */
+select {
+  /* Set appearance to none to remove default styling */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Create custom arrow styling using background image */
+  background-image: url('/images/caret-down.svg');
+  background-position: right 16px center; /* 16px from right edge */
+  background-repeat: no-repeat;
+  background-size: 14px;
+
+  /* Add right padding to prevent text from overlapping with arrow */
+  padding-right: 40px !important;
+}
+
+/* Remove default arrow in IE10+ */
+select::-ms-expand {
+  display: none;
+}
+
+/* Focus state */
+select:focus {
+  background-image: url('/images/caret-up.svg');
+}

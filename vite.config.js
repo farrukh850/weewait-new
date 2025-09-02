@@ -24,7 +24,18 @@ export default defineConfig({
         notFound: resolve(__dirname, '404.html'),
         daycareListView: resolve(__dirname, 'daycare-list-view.html'),
         daycareMapView: resolve(__dirname, 'daycare-map-view.html'),
-        daycareMapViewSidebarHide: resolve(__dirname, 'daycare-map-view-sidebar-hide.html')
+        daycareMapViewSidebarHide: resolve(__dirname, 'daycare-map-view-sidebar-hide.html'),
+        login: resolve(__dirname, '/login-register/login.html'),
+        login_error: resolve(__dirname, '/login-register/login-error.html'),
+        restore_password: resolve(__dirname, '/login-register/restore-password.html'),
+        verification_code: resolve(__dirname, '/login-register/verification-code.html'),
+        verification_code_error: resolve(__dirname, '/login-register/verification-code-error.html'),
+        confirm_email: resolve(__dirname, '/login-register/confirm-email.html'),
+        invitation_code: resolve(__dirname, '/login-register/invitation-code.html'),
+        signup_daycare: resolve(__dirname, '/login-register/signup-daycare.html'),
+        account_information: resolve(__dirname, '/login-register/account-information.html'),
+        add_photo_daycare: resolve(__dirname, '/login-register/add-photo-daycare.html'),
+        about_daycare: resolve(__dirname, '/login-register/about-daycare.html')
       },
     },
     // Ensure CSS is processed and extracted
@@ -35,7 +46,7 @@ export default defineConfig({
   server: {
     open: true,
     watch: {
-      include: ['src/**/*.css', '*.html'],
+      include: ['src/**/*.css', '*.html', 'login-register/**/*.html'],
     },
   },
 
