@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <title>WeeWait</title>
+    <link href="src/input.css" rel="stylesheet">
+    <link href="src/customcheckbox.css" rel="stylesheet">
+    <!-- Vite script will be injected here automatically during development -->
+</head>
+<body class="font-figtree">
+    <div class="flex items-center h-screen relative">
+        <div class="grid grid-cols-5 w-full">
+            <div class="col-span-2 h-full">
+                <div class="max-w-lg mx-auto flex items-center justify-center h-full">
+                    <div class="flex flex-col w-full">
+                        <h1 class="text-textmed leading-120 font-rocaone mb-2">Confirm email</h1>
+                        <p class="text-lg leading-120">We've sent a verification code to your email</p>
+                        <form action="#" class="mt-8 flex flex-col">
+                            <div class="flex gap-8 items-center">
+                                <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue mb-8 text-center w-full" placeholder="-" maxlength="1">
+                                <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue mb-8 text-center w-full" placeholder="-" maxlength="1">
+                                <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue mb-8 text-center w-full" placeholder="-" maxlength="1">
+                                <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue mb-8 text-center w-full" placeholder="-" maxlength="1">
+                            </div>
+                            <input type="submit" class="h-14 w-full bg-accent hover:bg-accent_hover transition-all duration-300 rounded-full font-rocaone text-xl leading-6 cursor-pointer" value="Continue">
+                        </form>
+                        <div class="flex items-center gap-2 justify-center">
+                            <p class="text-sm leading-120 mt-8 text-center block">Resend code</p>
+                            <p class="text-sm leading-120 mt-8 text-center block">0:04</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-3 h-screen">
+                <img src="/images/login-image.png" alt="Login Image" class="w-full h-full object-cover">
+            </div>
+            </div>
+            <div class="absolute top-8 left-10"><img src="/images/logo.svg" alt="Wee Wait"></div>
+    </div>
+    <script type="module" src="src/password.js"></script>
+</body>
+</html>
