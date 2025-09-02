@@ -29,7 +29,7 @@
     { "source": "/daycare-list-view", "destination": "/daycare-list-view.html" },
     { "source": "/daycare-map-view", "destination": "/daycare-map-view.html" },
     { "source": "/daycare-map-view-sidebar-hide", "destination": "/daycare-map-view-sidebar-hide.html" },
-    { "source": "/login-register/login", "destination": "/login-register/login.html" },
+    { "source": "/login", "destination": "/login.html" },
     { "source": "/login-register/signup", "destination": "/login-register/signup.html" },
     { "source": "/login-register/about-daycare", "destination": "/login-register/about-daycare.html" },
     { "source": "/login-register/account-information", "destination": "/login-register/account-information.html" },
