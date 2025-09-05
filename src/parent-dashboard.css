@@ -1,0 +1,55 @@
+/* Parent dashboard specific styles */
+.dashboard-main {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --header-height: 104px; /* Default header height */
+  --footer-height: 240px; /* Default footer height */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 104px; /* MD header height */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --footer-height: 240px; /* LG footer height */
+  }
+}
+
+/* Custom rounded table styles */
+.table-rounded tbody tr {
+  border-radius: 1.5rem; /* This matches rounded-3xl in Tailwind v4 */
+  position: relative;
+}
+
+/* Fix to prevent the pseudo-element from disturbing table layout */
+.table-rounded tbody tr td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.table-rounded tbody tr td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Background color for hover state */
+.table-rounded tbody tr:hover td {
+  background-color: rgb(56 189 248 / 0.1); /* This matches hover:bg-accent_skyblue/10 */
+}
+
+/* Hide delete buttons by default and show on row hover */
+.table-rounded tbody tr .action-button {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.table-rounded tbody tr:hover .action-button {
+  opacity: 1;
+}

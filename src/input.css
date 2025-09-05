@@ -6,6 +6,7 @@
 @theme {
   /* Colors - using exact naming to match HTML classes */
   --color-primary: #084DA7 !important;
+  --color-blue: #4489FF !important;
   --color-primary_black: #1E1E1E !important;
   --color-accent: #FFA9CF !important;
   --color-accent_red: #D84545 !important;

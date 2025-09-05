@@ -11,7 +11,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize range slider
   initRangeSlider();
+
+  // Add support for terms-popup-overlay specifically
+  initTermsPopup();
 });
+
+// New function to handle the terms-popup-overlay specifically
+function initTermsPopup() {
+  const termsPopupOverlay = document.getElementById('terms-popup-overlay');
+  const removeButton = document.querySelector('#terms-popup-overlay .apply-now-button');
+
+  if (removeButton && termsPopupOverlay) {
+    removeButton.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Close the terms popup with animation
+      termsPopupOverlay.classList.remove('opacity-100');
+      const popupContent = termsPopupOverlay.querySelector('.popup-content');
+      if (popupContent) {
+        popupContent.classList.add('opacity-0', 'translate-y-4');
+      }
+
+      setTimeout(() => {
+        termsPopupOverlay.classList.add('hidden');
+      }, 300);
+
+      // Update toast message for daycare removal
+      const toastBlock = document.querySelector('.toast-block');
+      if (toastBlock) {
+        const toastTitle = toastBlock.querySelector('h5');
+        const toastMessage = toastBlock.querySelector('p');
+      }
+
+      // The toast will be shown by the existing apply-now-button event handlers
+    });
+  }
+}
 
 function initPopup() {
   // Find ALL popup-button elements that will trigger the popup

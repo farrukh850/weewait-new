@@ -37,7 +37,16 @@ export default defineConfig({
         signup: resolve(__dirname, '/login-register/signup.html'),
         account_information: resolve(__dirname, '/login-register/account-information.html'),
         add_photo_daycare: resolve(__dirname, '/login-register/add-photo-daycare.html'),
-        about_daycare: resolve(__dirname, '/login-register/about-daycare.html')
+        about_daycare: resolve(__dirname, '/login-register/about-daycare.html'),
+        parent_empty: resolve(__dirname, '/parent-dashboard/parent-empty.html'),
+        parent_dashboard: resolve(__dirname, '/parent-dashboard/parent-dashboard.html'),
+        parent_add_child: resolve(__dirname, '/parent-dashboard/parent-add-child.html'),
+        settings_profile: resolve(__dirname, '/parent-dashboard/settings-profile.html'),
+        deactivated_account: resolve(__dirname, '/parent-dashboard/deactivated-account.html'),
+        settings_payment_method: resolve(__dirname, '/parent-dashboard/settings-payment-method.html'),
+        settings_subscription: resolve(__dirname, '/parent-dashboard/settings-subscription.html'),
+        settings_password: resolve(__dirname, '/parent-dashboard/settings-password.html'),
+        settings_email: resolve(__dirname, '/parent-dashboard/settings-email.html'),
       },
     },
     // Ensure CSS is processed and extracted
