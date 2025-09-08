@@ -50,6 +50,7 @@ export default defineConfig({
         daycare_empty: resolve(__dirname, '/daycare-dashboard/daycare-empty.html'),
         daycare_dashboard: resolve(__dirname, '/daycare-dashboard/daycare-dashboard.html'),
         settings_backup_contact: resolve(__dirname, '/daycare-dashboard/settings-backup-contact.html'),
+        settings_daycare_info: resolve(__dirname, '/daycare-dashboard/settings-daycare-info.html'),
       },
     },
     // Ensure CSS is processed and extracted

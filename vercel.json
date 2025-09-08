@@ -6,6 +6,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/settings-daycare-info", "destination": "/daycare-dashboard/settings-daycare-info.html" },
     { "source": "/settings-backup-contact", "destination": "/daycare-dashboard/settings-backup-contact.html" },
     { "source": "/daycare-dashboard", "destination": "/daycare-dashboard/daycare-dashboard.html" },
     { "source": "/daycare-empty", "destination": "/daycare-dashboard/daycare-empty.html" },
