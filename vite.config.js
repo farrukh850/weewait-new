@@ -47,6 +47,9 @@ export default defineConfig({
         settings_subscription: resolve(__dirname, '/parent-dashboard/settings-subscription.html'),
         settings_password: resolve(__dirname, '/parent-dashboard/settings-password.html'),
         settings_email: resolve(__dirname, '/parent-dashboard/settings-email.html'),
+        daycare_empty: resolve(__dirname, '/daycare-dashboard/daycare-empty.html'),
+        daycare_dashboard: resolve(__dirname, '/daycare-dashboard/daycare-dashboard.html'),
+        settings_backup_contact: resolve(__dirname, '/daycare-dashboard/settings-backup-contact.html'),
       },
     },
     // Ensure CSS is processed and extracted

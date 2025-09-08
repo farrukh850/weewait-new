@@ -6,6 +6,9 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/settings-backup-contact", "destination": "/daycare-dashboard/settings-backup-contact.html" },
+    { "source": "/daycare-dashboard", "destination": "/daycare-dashboard/daycare-dashboard.html" },
+    { "source": "/daycare-empty", "destination": "/daycare-dashboard/daycare-empty.html" },
     { "source": "/settings-payment-method", "destination": "/parent-dashboard/settings-payment-method.html" },
     { "source": "/deactivated-account", "destination": "/parent-dashboard/deactivated-account.html" },
     { "source": "/settings-subscription", "destination": "/parent-dashboard/settings-subscription.html" },

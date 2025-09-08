@@ -87,6 +87,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Add click event listeners to the menu items inside the popup
+    if (mobilePopup) {
+        const menuItems = mobilePopup.querySelectorAll('.close-remove-daycare-popup');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Execute the action associated with this item
+                // then close the popup
+                closeMobilePopup();
+            });
+        });
+    }
+
     // Function to close mobile popup with animation
     function closeMobilePopup() {
         if (mobilePopup) {
@@ -102,6 +114,78 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 300);
             }, 100);
         }
+    }
+
+    // Send Invite functionality - Show the daycare-remove-accept-response popup
+    const sendInviteButton = document.querySelector('.send-invite-button');
+    const acceptResponsePopup = document.getElementById('daycare-remove-accept-response');
+    const acceptResponseCloseButton = acceptResponsePopup?.querySelector('button');
+
+    if (sendInviteButton) {
+        sendInviteButton.addEventListener('click', function(e) {
+            // Show daycare-remove-accept-response popup after closing the mobile popup
+            setTimeout(() => {
+                showAcceptResponsePopup();
+            }, 400); // Wait for the mobile popup to close first
+        });
+    }
+
+    // Function to show the accept response popup
+    function showAcceptResponsePopup() {
+        if (acceptResponsePopup) {
+            // Show popup
+            acceptResponsePopup.classList.remove('hidden');
+            acceptResponsePopup.style.opacity = '1';
+
+            // Add fade-in animation
+            setTimeout(() => {
+                const popupContent = acceptResponsePopup.querySelector('.popup-content');
+                if (popupContent) {
+                    popupContent.classList.remove('opacity-0', 'translate-y-4');
+                }
+            }, 10);
+        }
+    }
+
+    // Function to close the accept response popup
+    function closeAcceptResponsePopup() {
+        if (acceptResponsePopup) {
+            const popupContent = acceptResponsePopup.querySelector('.popup-content');
+            if (popupContent) {
+                popupContent.classList.add('opacity-0', 'translate-y-4');
+            }
+
+            setTimeout(() => {
+                acceptResponsePopup.style.opacity = '0';
+                setTimeout(() => {
+                    acceptResponsePopup.classList.add('hidden');
+                }, 300);
+            }, 100);
+        }
+    }
+
+    // Add click event listener to close button in accept response popup
+    if (acceptResponseCloseButton) {
+        acceptResponseCloseButton.addEventListener('click', function() {
+            closeAcceptResponsePopup();
+        });
+    }
+
+    // Close accept response popup when clicking outside
+    acceptResponsePopup?.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeAcceptResponsePopup();
+        }
+    });
+
+    // Add click event listeners to the menu items inside the accept response popup
+    if (acceptResponsePopup) {
+        const acceptResponseMenuItems = acceptResponsePopup.querySelectorAll('.close-remove-daycare-popup');
+        acceptResponseMenuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                closeAcceptResponsePopup();
+            });
+        });
     }
 
     // Filter popup functionality
@@ -162,4 +246,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
-

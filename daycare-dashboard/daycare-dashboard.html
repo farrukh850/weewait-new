@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./src/carousel.css">
+    <link rel="stylesheet" href="./src/scrollbar.css">
+    <link rel="stylesheet" href="./src/accordion.css">
+    <link rel="stylesheet" href="../src/parent-dashboard.css">
+    <title>WeeWait</title>
+    <link href="../src/input.css" rel="stylesheet">
+    <!-- Vite script will be injected here automatically during development -->
+</head>
+<body class="font-figtree flex flex-col min-h-screen">
+<header class="pt-4 pb-3 md:pt-10 md:pb-4">
+    <div class="container px-4 flex items-center justify-between">
+        <a href="/"><img src="/images/logo.svg" width="135" alt="Wee Wait"></a>
+
+        <!-- Hamburger Menu Button (visible on mobile) -->
+        <button id="hamburger-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 z-30">
+            <span class="block w-6 h-0.5 bg-primary_black transition-all"></span>
+            <span class="block w-6 h-0.5 bg-primary_black transition-all"></span>
+            <span class="block w-6 h-0.5 bg-primary_black transition-all"></span>
+        </button>
+
+        <!-- Navigation (hidden on mobile) -->
+        <nav id="main-nav" class="fixed md:static top-0 right-0 bottom-0 left-0 bg-white md:bg-transparent flex md:flex-row items-center justify-center z-20 transform translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out md:transition-none">
+            <ul class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                <li><a href="/daycare-list-view" class="text-primary_black text-lg leading-6">Daycares</a></li>
+                <li><a href="/how-it-works" class="text-primary_black text-lg leading-6">How it works?</a></li>
+                <li><a href="/faq" class="text-primary_black text-lg leading-6">FAQ</a></li>
+                <li><a href="/pricing" class="text-primary_black text-lg leading-6">Pricing</a></li>
+                <li><a href="about.html" class="text-primary_black text-lg leading-6">About us</a></li>
+                <li><a href="contact.html" class="text-primary_black text-lg leading-6">Contact us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Location and Login (hidden on mobile, shown in mobile menu) -->
+        <div class="hidden md:flex gap-4 items-center">
+            <div class="md:hidden xxl:flex items-center p-2 cursor-pointer rounded-full border border-primary_black/20 gap-2"><img src="/images/map-marker.svg" alt="Map Marker"><p class="text-base leading-5">163 Maplewood Drive, Ottawa</p><img src="/images/caret-down.svg" alt="Angle down" class="ml-3"></div>
+            <div class="w-20 h-12 rounded-full flex items-center justify-between py-2 pl-1 pr-2.5 bg-bg_grey cursor-pointer filter-button relative">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-accent_skyblue/10">
+                    <img src="/images/profile-icon.svg" alt="Profile Icon" class="w-4 h-4">
+                </div>
+                <img src="/images/caret-down.svg" alt="Arrow Icon">
+                <div class="w-50 rounded-2xl p-2 absolute top-full bg-white right-0 shadow filter-dropdown" style="opacity: 1; max-height: 220px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto;">
+                    <ul class="flex flex-col rounded-xl bg-bg_grey">
+                        <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/dashboard-icon.svg" alt="Blue Check" class=""> Parent Dashboard </li>
+                        <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/setting-icon.svg" alt="Blue Check" class="">Settings </li>
+                        <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/logout-icon.svg" alt="Blue Check" class="">Log out </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu location and login (visible inside mobile menu) -->
+        <div id="mobile-menu-items" class="fixed bottom-0 left-0 right-0 top-0 bg-white flex flex-col items-center justify-center gap-8 z-10 transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="flex flex-col items-center gap-8 w-full px-4">
+                <div class="flex items-center p-2 cursor-pointer rounded-full border border-primary_black/20 gap-2 w-full justify-center"><img src="/images/map-marker.svg" alt="Map Marker"><p class="text-base leading-5">163 Maplewood Drive, Ottawa</p><img src="/images/caret-down.svg" alt="Angle down" class="ml-3"></div>
+                <a href="#" class="py-3 w-full flex items-center justify-center px-6 border text-lg leading-6 border-primary_black rounded-full transition-all duration-300 hover:bg-black hover:text-accent hover:border-primary_black">Log in</a>
+            </div>
+            <div class="w-20 h-12 rounded-full flex items-center justify-between py-2 px-1 bg-bg_grey">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-accent_skyblue/10">
+                    <img src="/images/profile-icon.svg" alt="Profile Icon" class="w-4 h-4">
+                </div>
+                <img src="/images/caret-down.svg" alt="Arrow Icon">
+            </div>
+        </div>
+    </div>
+</header>
+<main class="mt-14 hidden lg:block">
+    <!-- Dashboard Empty -->
+    <div class="container relative mt-8 dashboard-main items-start flex-grow">
+        <!-- Tabs -->
+        <div class="flex overflow-x-auto relative z-10">
+            <button class="text-base border-b-2 border-accent font-semibold leading-120 px-4 py-2.5 text-black">Infant care</button>
+            <button class="text-base border-b-2 border-transparent leading-120 px-4 py-2.5 text-black">Toddler care</button>
+            <button class="text-base border-b-2 border-transparent leading-120 px-4 py-2.5 text-black">Preschool</button>
+        </div>
+        <div class="flex items-center gap-6 mt-8 w-full">
+            <div class="rounded-full bg-bg_grey/50 flex items-center justify-between gap-2 monthly-yearly-btn p-2">
+                <button class="tab-button flex-1 h-10 rounded-full text-sm leading-120 font-semibold italic transition-all duration-300 bg-accent px-4">Current daycare list</button>
+                <button class="tab-button flex items-center justify-between px-0 gap-2 h-10 rounded-full text-sm font-semibold italic transition-all duration-300 text-primary_black/70"><span class="ps-2">All responses</span> <span class="save-discount h-6 flex items-center justify-center mx-2 rounded-full px-2 transition-all duration-300 bg-accent_yellow text-black">2</span></button>
+            </div>
+            <div class="relative">
+                <input type="text" placeholder="Search" class="h-12 focus:outline-none text-black/80 placeholder:text-black/80 w-72 rounded-xl py-4 px-10 text-base leading-120 bg-input_bg">
+                <img src="/images/search.svg" alt="Search Icon" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-4">
+            </div>
+            <div class="flex items-center justify-between px-0 gap-2 text-sm font-semibold italic text-primary_black/70"><span class="ps-2">Children on wait list for this room:</span> <span class="save-discount h-6 flex items-center justify-center mx-2 rounded-full px-2 transition-all duration-300 bg-accent_yellow text-black">5</span></div>
+            <div class="flex gap-2">
+                <button class="h-12 rounded-full border border-black flex items-center gap-2 text-base leading-120 text-black px-6">
+                    <img src="/images/invite-a-parent.svg" alt="Invite Parent Icon">
+                    Invite a parent
+                </button>
+                <button class="h-12 rounded-full border border-black flex items-center gap-2 text-base leading-120 text-black px-6">
+                    <img src="/images/download-list.svg" alt="DownLoad List Icon">
+                    Download list
+                </button>
+            </div>
+        </div>
+
+        <div class="tabs-content w-full rounded-2xl bg-bg_grey mt-6 p-2">
+            <table class="w-full bg-bg_grey table-rounded">
+                <thead>
+                <tr>
+                    <td class="text-sm font-semibold text-black/60 p-3 flex items-center gap-2">Position on waitlist <img src="/images/waitlist.svg" alt="Waitlist Icon"></td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Child's Name</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Child's DOB</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Siblings</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Parent`s name</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Email</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Phone number</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Invite</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Follow up</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Comment</td>
+                    <td>&nbsp;</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="hover:bg-accent_skyblue/10 transition duration-300 overflow-hidden">
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">1</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Olivia Johnson</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">No</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Firstname Lastname</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">username@gmail.com</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">(123) 456-7890</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">-</td>
+                    <td class="filter-button"><button><img src="/images/three-dots.svg" alt="Dots"></button>
+                        <div class="w-50 rounded-2xl p-2 absolute top-full bg-white right-0 shadow filter-dropdown" style="opacity: 1; max-height: 138px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto; z-index: 10">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="daycare-details-popup-button cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/info.svg" alt="Blue Check" class="">Details </li>
+                                <li class="terms-link cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/edit-riw.svg" alt="Blue Check" class=""> Edit Row</li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/send-invite.svg" alt="Blue Check" class="">Send Invite </li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/delete-blue.svg" alt="Blue Check" class="">Remove </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="hover:bg-accent_skyblue/10 transition duration-300 overflow-hidden">
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">2</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">John Johnson</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">No</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Firstname Lastname</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">username@gmail.com</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">(123) 456-7890</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">-</td>
+                    <td class="filter-button"><button><img src="/images/three-dots.svg" alt="Dots"></button>
+                        <div class="w-50 rounded-2xl p-2 absolute top-full bg-white right-0 shadow filter-dropdown" style="opacity: 1; max-height: 138px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto; z-index: 10">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="daycare-details-popup-button cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/info.svg" alt="Blue Check" class="">Details </li>
+                                <li class="terms-link cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/edit-riw.svg" alt="Blue Check" class=""> Edit Row</li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/send-invite.svg" alt="Blue Check" class="">Send Invite </li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/delete-blue.svg" alt="Blue Check" class="">Remove </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="hover:bg-accent_skyblue/10 transition duration-300 overflow-hidden">
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">3</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Olivia Johnson</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">No</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Firstname Lastname</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">username@gmail.com</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">(123) 456-7890</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">-</td>
+                    <td class="filter-button"><button><img src="/images/three-dots.svg" alt="Dots"></button>
+                        <div class="w-50 rounded-2xl p-2 absolute top-full bg-white right-0 shadow filter-dropdown" style="opacity: 1; max-height: 138px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto; z-index: 10">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="daycare-details-popup-button cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/info.svg" alt="Blue Check" class="">Details </li>
+                                <li class="terms-link cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/edit-riw.svg" alt="Blue Check" class=""> Edit Row</li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/send-invite.svg" alt="Blue Check" class="">Send Invite </li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/delete-blue.svg" alt="Blue Check" class="">Remove </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="hover:bg-accent_skyblue/10 transition duration-300 overflow-hidden">
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">4</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">John Johnson</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">No</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Firstname Lastname</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">username@gmail.com</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">(123) 456-7890</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">-</td>
+                    <td class="filter-button"><button><img src="/images/three-dots.svg" alt="Dots"></button>
+                        <div class="w-50 rounded-2xl p-2 absolute top-full bg-white right-0 shadow filter-dropdown" style="opacity: 1; max-height: 138px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto; z-index: 10">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="daycare-details-popup-button cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/info.svg" alt="Blue Check" class="">Details </li>
+                                <li class="terms-link cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/edit-riw.svg" alt="Blue Check" class=""> Edit Row</li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/send-invite.svg" alt="Blue Check" class="">Send Invite </li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/delete-blue.svg" alt="Blue Check" class="">Remove </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="hover:bg-accent_skyblue/10 transition duration-300 overflow-hidden">
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">5</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">John Johnson</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">No</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Firstname Lastname</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">username@gmail.com</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">(123) 456-7890</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">-</td>
+                    <td class="filter-button"><button><img src="/images/three-dots.svg" alt="Dots"></button>
+                        <div class="w-50 rounded-2xl p-2 absolute top-full bg-white right-0 shadow filter-dropdown" style="opacity: 1; max-height: 138px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto; z-index: 10">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="daycare-details-popup-button cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/info.svg" alt="Blue Check" class="">Details </li>
+                                <li class="terms-link cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/edit-riw.svg" alt="Blue Check" class=""> Edit Row</li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/send-invite.svg" alt="Blue Check" class="">Send Invite </li>
+                                <li class="py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/delete-blue.svg" alt="Blue Check" class="">Remove </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tabs-content w-full rounded-2xl bg-bg_grey mt-6 p-2">
+            <table class="w-full bg-bg_grey table-rounded">
+                <thead>
+                <tr>
+                    <td class="text-sm font-semibold text-black/60 p-3 flex items-center gap-2">Position on waitlist <img src="/images/waitlist.svg" alt="Waitlist Icon"></td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Child's Name</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Child's DOB</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Siblings</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Parent`s name</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Email</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Phone number</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Invite</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Follow up</td>
+                    <td class="text-sm font-semibold text-black/60 p-3">Comment</td>
+                    <td>&nbsp;</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="hover:bg-accent_skyblue/10 transition duration-300 overflow-hidden">
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">1</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Olivia Johnson</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">No</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Firstname Lastname</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">username@gmail.com</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">(123) 456-7890</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">-</td>
+                    <td class="filter-button"><button><img src="/images/three-dots.svg" alt="Dots"></button>
+                        <div class="w-50 rounded-2xl p-2 absolute top-full bg-white right-0 shadow filter-dropdown" style="opacity: 1; max-height: 138px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto; z-index: 10">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="accept-response-button cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/accept-response.svg" alt="Blue Check" class="">Accept Response </li>
+                                <li class="remove-response-button py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/delete-blue.svg" alt="Blue Check" class="">Remove </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="hover:bg-accent_skyblue/10 transition duration-300 overflow-hidden">
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">1</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Olivia Johnson</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">No</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">Firstname Lastname</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">username@gmail.com</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">(123) 456-7890</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">12 Jul, 2025</td>
+                    <td class="text-sm font-semibold text-black/60 p-3 cursor-pointer">-</td>
+                    <td class="filter-button"><button><img src="/images/three-dots.svg" alt="Dots"></button>
+                        <div class="w-50 rounded-2xl p-2 absolute top-full bg-white right-0 shadow filter-dropdown" style="opacity: 1; max-height: 138px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: auto; z-index: 10">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="accept-response-button cursor-pointer py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/accept-response.svg" alt="Blue Check" class="">Accept Response </li>
+                                <li class="remove-response-button py-3 px-2.5 text-sm group gap-2 flex items-center leading-120 relative rounded-xl hover:bg-accent_skyblue/10"><img src="/images/delete-blue.svg" alt="Blue Check" class="">Remove </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add Parent toast -->
+        <div class="toast-block p-6 rounded-3xl border border-black/10 w-full lg:w-toast_width absolute top-0 right-0 bg-white shadow overflow-hidden z-50 hidden">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-start gap-4">
+                    <img src="/images/green-check.svg" alt="Green Check" class="w-5">
+                    <h5 class="text-lg leading-120 font-semibold">Response removed successfully</h5>
+                </div>
+                <button><img src="/images/close-grey.svg" alt="Close Grey"></button>
+            </div>
+            <p class="text-base text-black/80 leading-120 pl-10">The parent has been deleted from responces list.</p>
+            <div class="flex items-center gap-1 mt-4 pl-10">
+                <img src="/images/undo.svg" alt="Undo Icon">
+                <p class="text-base leading-120">Undo</p>
+            </div>
+            <span class="h-1 w-full bg-gray-200 absolute bottom-0 left-0 right-0"><em class="h-1 w-full bg-accent absolute bottom-0 left-0" style="transition: none; width: 50%;"></em></span>
+        </div>
+
+        <!-- Accept response toast -->
+        <div class="accept-response-toast-block p-6 rounded-3xl border border-black/10 w-full lg:w-toast_width absolute top-0 right-0 bg-white shadow overflow-hidden z-50 hidden">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-start gap-4">
+                    <img src="/images/green-check.svg" alt="Green Check" class="w-5">
+                    <h5 class="text-lg leading-120 font-semibold">Response accepted successfully</h5>
+                </div>
+                <button><img src="/images/close-grey.svg" alt="Close Grey"></button>
+            </div>
+            <p class="text-base text-black/80 leading-120 pl-10">The parent has been added to your daycare list.</p>
+            <span class="h-1 w-full bg-gray-200 absolute bottom-0 left-0 right-0"><em class="h-1 w-full bg-accent absolute bottom-0 left-0" style="transition: none; width: 50%;"></em></span>
+        </div>
+    </div>
+</main>
+
+<main>
+    <!-- Parent Dashboard Mobile -->
+    <div class="container block lg:hidden relative pb-10 lg:pb-0">
+        <div class="mt-6">
+            <div class="flex items-center border-b border-black/10">
+                <button class="tab-button py-2.5 px-4 text-base leading-120 border-b-2 border-accent" data-tab="waitlists">Infant Care</button>
+                <button class="tab-button py-2.5 px-4 text-base leading-120" data-tab="children">Toddler Care</button>
+                <button class="tab-button py-2.5 px-4 text-base leading-120" data-tab="children">Preschool</button>
+            </div>
+
+            <div class="tab-content mt-4" id="waitlists-tab">
+                <div class="flex flex-col gap-4 w-full">
+                    <div class="flex items-center gap-6 w-full">
+                        <div class="rounded-full bg-bg_grey/50 flex items-center justify-between gap-2 monthly-yearly-btn p-2">
+                            <button class="tab-button flex-1 h-10 rounded-full text-sm leading-120 font-semibold italic transition-all duration-300 bg-accent px-4">Current daycare list</button>
+                            <button class="tab-button flex items-center justify-between px-0 gap-2 h-10 rounded-full text-sm font-semibold italic transition-all duration-300 text-primary_black/70"><span class="ps-2">All responses</span> <span class="save-discount h-6 flex items-center justify-center mx-2 rounded-full px-2 transition-all duration-300 bg-accent_yellow text-black">2</span></button>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start px-0 gap-2 text-sm font-semibold italic text-primary_black/70"><span class="ps-2">Children on wait list for this room:</span> <span class="save-discount h-6 flex items-center justify-center mx-2 rounded-full px-2 transition-all duration-300 bg-accent_yellow text-black">5</span></div>
+                    <div class="flex gap-2 justify-between">
+                        <div class="parent-dashboard-mobile-filter flex gap-2 min-w-12 border border-black h-12 items-center justify-center px-4 rounded-full bg-bg_grey cursor-pointer">
+                            <img src="/images/filter-icon.svg" alt="Filter Icon">
+                        </div>
+                        <div class="flex gap-2 border border-black h-12 items-center justify-center px-4 rounded-full bg-transparent hover:bg-accent_hover hover:border-accent transition duration-200 cursor-pointer w-full">
+                            <img src="/images/invite-a-parent.svg" class="w-4" alt="Plus">
+                            <p class="text-base leading-120">Invite a parent</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <div class="bg-bg_grey rounded-2xl p-4 mb-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-base font-semibold">Olivia Johnson</h4>
+                            <button class="remove-childcare-mobile-button"><img src="/images/three-dots.svg" alt="Three Dots"></button>
+                        </div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <p class="text-sm text-black/60 flex-1">Position on waitlist:</p>
+                            <p class="text-sm font-semibold flex-1">1</p>
+                        </div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <p class="text-sm text-black/60 flex-1">Child's DOB</p>
+                            <p class="text-sm font-semibold flex-1">12 Jul, 2025</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <p class="text-sm text-black/60 flex-1">Siblings</p>
+                            <p class="text-sm font-semibold flex-1">No</p>
+                        </div>
+                        <button class="text-sm underline">More info</button>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="bg-bg_grey rounded-2xl p-4 mb-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-base font-semibold">Olivia Johnson</h4>
+                            <button class="remove-childcare-mobile-button"><img src="/images/three-dots.svg" alt="Three Dots"></button>
+                        </div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <p class="text-sm text-black/60 flex-1">Position on waitlist:</p>
+                            <p class="text-sm font-semibold flex-1">1</p>
+                        </div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <p class="text-sm text-black/60 flex-1">Child's DOB</p>
+                            <p class="text-sm font-semibold flex-1">12 Jul, 2025</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <p class="text-sm text-black/60 flex-1">Siblings</p>
+                            <p class="text-sm font-semibold flex-1">No</p>
+                        </div>
+                        <button class="text-sm underline">More info</button>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="bg-bg_grey rounded-2xl p-4 mb-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-base font-semibold">Olivia Johnson</h4>
+                            <button class="remove-childcare-mobile-button"><img src="/images/three-dots.svg" alt="Three Dots"></button>
+                        </div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <p class="text-sm text-black/60 flex-1">Position on waitlist:</p>
+                            <p class="text-sm font-semibold flex-1">1</p>
+                        </div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <p class="text-sm text-black/60 flex-1">Child's DOB</p>
+                            <p class="text-sm font-semibold flex-1">12 Jul, 2025</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <p class="text-sm text-black/60 flex-1">Siblings</p>
+                            <p class="text-sm font-semibold flex-1">No</p>
+                        </div>
+                        <button class="text-sm underline">More info</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content mt-6 hidden h-screen" id="children-tab">
+                <div class="flex flex-col">
+                    <div class="flex items-center justify-between mb-8">
+                        <h1 class="text-lg leading-120 font-semibold">List of your children</h1>
+                        <button class="flex items-center gap-1 py-1.5 px-2 bg-accent_skyblue/10 rounded-lg">
+                            <img src="/images/blue-plus.svg" alt="Plus Icon">
+                            <p class="text-base leading-120 text-blue font-semibold">Add child</p>
+                        </button>
+                    </div>
+                    <ul class="py-2 px-4.5 rounded-2xl border border-gray-100 bg-bg_grey">
+                        <li class="edit-remove-childcare py-2.5 flex items-center justify-between border-b border-gray-200 font-semibold cursor-pointer relative"><p class="text-base leading-120">Olivia Johnson</p><img src="/images/three-dots.svg" alt="Three Dots">
+                        </li>
+                        <li class="edit-remove-childcare py-2.5 flex items-center justify-between font-semibold cursor-pointer relative"><p class="text-base leading-120">John Johnson</p><img src="/images/three-dots.svg" alt="Three Dots">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Toast Notification -->
+        <div class="toast-block p-6 rounded-3xl border border-black/10 w-full lg:w-toast_width absolute top-0 right-0 bg-white shadow overflow-hidden z-50 hidden" style="display: none; opacity: 0; transition: 0.3s;">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-start gap-4">
+                    <img src="/images/green-check.svg" alt="Green Check" class="w-5">
+                    <h5 class="text-lg leading-120 font-semibold">Your child has been removed from the waitlist</h5>
+                </div>
+                <button><img src="/images/close-grey.svg" alt="Close Grey"></button>
+            </div>
+            <p class="text-base text-black/80 leading-120 pl-10">You’ll no longer receive updates from
+                this daycare.</p>
+            <div class="flex items-center gap-1 mt-4 pl-10">
+                <img src="/images/undo.svg" alt="Undo Icon">
+                <p class="text-base leading-120">Undo</p>
+            </div>
+            <span class="h-1 w-full bg-gray-200 absolute bottom-0 left-0 right-0"><em class="h-1 w-full bg-accent absolute bottom-0 left-0" style="transition: none; width: 100%;"></em></span>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer>
+    <div class="container xxl:px-0">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-0">
+            <div class="flex flex-col gap-4">
+                <a href="#" class="text-3xl text-primary_black font-rocaone">WeeWait</a>
+                <div class="flex items-center gap-1">
+                    <img src="/images/heart.svg" alt="Heart">
+                    <p class="text-lg leading-120">Built by parents, for parents</p>
+                </div>
+            </div>
+            <ul class="flex gap-4 lg:gap-8 lg:items-center lg:justify-center flex-wrap lg:flex-nowrap">
+                <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">Daycares</a></li>
+                <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">How it works?</a></li>
+                <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">FAQ</a></li>
+                <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">Pricing</a></li>
+                <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">About us</a></li>
+                <li><a href="#" class="text-primary_black text-lg leading-6 text-primary_black/80">Contact us</a></li>
+            </ul>
+            <div class="flex items-center lg:justify-between gap-2">
+                <a href="#"><img src="/images/insta.svg" alt="Instagram"></a>
+                <a href="#"><img src="/images/fb.svg" alt="Facebook"></a>
+                <a href="#"><img src="/images/linkedin.svg" alt="Linkedin"></a>
+            </div>
+        </div>
+        <hr class="my-6 bg-black/10">
+        <div class="flex flex-col lg:flex-row gap-6 lg:gap-0 lg:items-center justify-between lg:pb-14 pb-5">
+            <div class="flex gap-4 lg:gap-6 lg:items-center lg:justify-center flex-wrap lg:flex-nowrap">
+                <a href="#" class="text-sm leading-120 text-primary_black/60">Privacy Policy</a>
+                <a href="terms-parents.html" class="text-sm leading-120 text-primary_black/60">Terms and conditions for Parents</a>
+                <a href="terms-daycare.html" class="text-sm leading-120 text-primary_black/60">Terms and conditions for Daycares</a>
+            </div>
+            <div class="flex items-start gap-2">
+                <p class="text-base leading-120 text-primary_black">Crafted by</p>
+                <img src="/images/u1core.svg" alt="U1Core Logo">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Daycare dashboard edit row -->
+<div id="terms-popup-overlay" class="fixed inset-0 bg-black/50 flex items-end xl:items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out">
+    <div class="popup-content bg-white rounded-3xl max-w-xl w-full xl:mx-4 p-4 xl:p-6 relative opacity-0 translate-y-4 transition-all duration-300 ease-in-out">
+        <button id="close-popup-mobile" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center cursor-pointer">
+            <img src="/images/close-grey.svg" alt="Close" class="w-6 h-6">
+        </button>
+        <div>
+            <h2 class="text-2xl xl:text-textmed leading-120 font-rocaone">Edit row</h2>
+            <h3 class="text-base mt-6">Child's Name: <b class="text-lg">Olivia Johnson</b></h3>
+            <form action="#" class="mt-6 w-full flex flex-col gap-6">
+                <div class="flex flex-col gap-2 flex-1">
+                    <label class="pl-4 text-xs leading-120 text-black/80">Start Date</label>
+                    <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                        <p class="text-base leading-120">12 Jul, 2025</p>
+                        <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(0deg); transition: transform 0.3s;">
+                        <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: none;">
+                            <ul class="flex flex-col rounded-xl bg-bg_grey">
+                                <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">12 Jul, 2025 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">12 Jul, 2025 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                                <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">12 Jul, 2025 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col items-start gap-2 flex-1">
+                    <label for="patient-name" class="pl-4 text-xs leading-120 text-black/80">Parent's Name</label>
+                    <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="Firstname Lastname" id="patient-name" name="max-age">
+                </div>
+                <div class="flex flex-col items-start gap-2 flex-1">
+                    <label for="comments" class="pl-4 text-xs leading-120 text-black/80">Comments</label>
+                    <textarea type="email" class="text-base h-25 p-4 leading-120 text-black resize-none px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="Enter some text..." id="comments" name="max-age"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="mt-6 flex justify-end gap-4 mb-10 xl:mb-0">
+            <button class="flex-1 px-4 xl:px-6 py-3 h-14 w-full max-lg:max-w-32  hover:bg-accent_hover transition-all duration-300 rounded-full text-black font-medium cursor-pointer text-base xl:text-lg leading-6 font-rocaone border border-black hover:border-accent bg-transparent">Cancel
+            </button>
+            <button class="apply-now-button flex-1 px-4 xl:px-6 py-3 h-14 bg-accent hover:bg-accent_hover transition-all duration-300 rounded-full text-black font-medium cursor-pointer text-base xl:text-lg leading-6 font-rocaone">Save
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Daycare dashboard row details -->
+<div id="daycare-row-details" class="fixed inset-0 bg-black/50 flex items-end xl:items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out">
+    <div class="popup-content bg-white rounded-3xl max-w-xl w-full xl:mx-4 p-4 xl:p-6 relative opacity-0 translate-y-4 transition-all duration-300 ease-in-out max-h-11/12 overflow-y-auto">
+        <button id="close-popup-mobile-daycare-details" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center cursor-pointer">
+            <img src="/images/close-grey.svg" alt="Close" class="w-6 h-6">
+        </button>
+        <div>
+            <h2 class="text-2xl xl:text-textmed leading-120 font-rocaone">Details</h2>
+            <h3 class="text-base mt-6">Child's Name: <b class="text-lg">Olivia Johnson</b></h3>
+            <form action="#" class="mt-6 w-full flex flex-col gap-6">
+                <div class="flex gap-4 items-center">
+                    <div class="flex flex-col items-start gap-2 flex-1">
+                        <label for="child-name" class="pl-4 text-xs leading-120 text-black/80">Child's Name</label>
+                        <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="Olivia Johnson" id="child-name" name="max-age">
+                    </div>
+                    <div class="flex flex-col items-start gap-2 flex-1">
+                        <label for="child-dob" class="pl-4 text-xs leading-120 text-black/80">Child's DOB</label>
+                        <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="12 Jul, 2025" id="child-dob" name="max-age">
+                    </div>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <div class="flex flex-col items-start gap-2 flex-1">
+                        <label for="gender" class="pl-4 text-xs leading-120 text-black/80">Gender</label>
+                        <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="Girl" id="gender" name="max-age">
+                    </div>
+                    <div class="flex flex-col items-start gap-2 flex-1">
+                        <label for="language-spoken" class="pl-4 text-xs leading-120 text-black/80">Languages Spoken</label>
+                        <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="English, French" id="language-spoken" name="max-age">
+                    </div>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <div class="flex flex-col items-start gap-2 flex-1">
+                        <label for="preffered-start" class="pl-4 text-xs leading-120 text-black/80">Preferred Start Date</label>
+                        <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="01 Sep, 2025" id="preffered-start" name="max-age">
+                    </div>
+                    <div class="flex gap-4 items-center flex-1">
+                        <div class="flex flex-col items-start gap-2 flex-1">
+                            <label for="therapy" class="pl-4 text-xs leading-120 text-black/80">Therapy Referral</label>
+                            <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="No" id="therapy" name="max-age">
+                        </div>
+                        <div class="flex flex-col items-start gap-2 flex-1">
+                            <label for="Subsidy" class="pl-4 text-xs leading-120 text-black/80">Subsidy</label>
+                            <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="No" id="Subsidy" name="max-age">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col items-start gap-2 flex-1">
+                    <label for="allergies" class="pl-4 text-xs leading-120 text-black/80">Allergies / Restrictions</label>
+                    <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="Peanut allergy" id="allergies" name="max-age">
+                </div>
+                <div class="flex flex-col items-start gap-2 flex-1">
+                    <label for="accomodation" class="pl-4 text-xs leading-120 text-black/80">Physical Accommodations</label>
+                    <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="Yes — wheelchair-accessible classroom required" id="accomodation" name="max-age">
+                </div>
+                <div class="flex flex-col items-start gap-2 flex-1">
+                    <label for="medical-needs" class="pl-4 text-xs leading-120 text-black/80">Medical Needs</label>
+                    <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="YYes — epinephrine auto-injector for peanut allergy" id="medical-needs" name="max-age">
+                </div>
+                <div class="flex flex-col items-start gap-2 flex-1">
+                    <label for="other-needs" class="pl-4 text-xs leading-120 text-black/80">Other Needs</label>
+                    <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="YYes — epinephrine auto-injector for peanut allergy" id="other-needs" name="max-age">
+                </div>
+                <div class="flex gap-4 items-center">
+                    <div class="flex flex-col items-start gap-2 flex-1">
+                        <label for="patient-name-2" class="pl-4 text-xs leading-120 text-black/80">Parent’s Name</label>
+                        <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="Sarah Johnson" id="patient-name-2" name="max-age">
+                    </div>
+                    <div class="flex gap-4 items-center flex-1">
+                        <div class="flex flex-col items-start gap-2 flex-1">
+                            <label for="waitlist2" class="pl-4 text-xs leading-120 text-black/80">Days on Waitlist:</label>
+                            <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="23 " id="waitlist2" name="max-age">
+                        </div>
+                        <div class="flex flex-col items-start gap-2 flex-1">
+                            <label for="siblings2" class="pl-4 text-xs leading-120 text-black/80">Siblings</label>
+                            <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="No" id="siblings2" name="max-age">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <div class="flex flex-col items-start gap-2 flex-1">
+                        <label for="email" class="pl-4 text-xs leading-120 text-black/80">Email</label>
+                        <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="sarah.johnson@email.com" id="email" name="max-age">
+                    </div>
+                    <div class="flex flex-col items-start gap-2 flex-1">
+                        <label for="phone2" class="pl-4 text-xs leading-120 text-black/80">Phone Number</label>
+                        <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="phone2" id="phone2" name="max-age">
+                    </div>
+                </div>
+                <div class="flex flex-col items-start gap-2 flex-1">
+                    <label for="comments2" class="pl-4 text-xs leading-120 text-black/80">Comments</label>
+                    <input type="text" class="text-base leading-120 text-black h-12 px-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue w-full placeholder:text-black/80" placeholder="Family moving into area in August; flexible start date." id="comments2" name="max-age">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Daycare dashboard remove response-->
+<div id="daycare-remove-response" class="fixed inset-0 bg-black/50 flex items-end xl:items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out">
+    <div class="popup-content bg-white rounded-3xl max-w-xl w-full xl:mx-4 p-4 xl:p-6 relative opacity-0 translate-y-4 transition-all duration-300 ease-in-out">
+        <button id="close-popup-mobile-remove-response" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center cursor-pointer">
+            <img src="/images/close-grey.svg" alt="Close" class="w-6 h-6">
+        </button>
+        <div>
+            <h2 class="text-2xl xl:text-textmed leading-120 font-rocaone">Remove response</h2>
+            <h3 class="text-xl leading-120 my-6">Are you sure you want to remove response?</h3>
+            <p class="text-lg leading-120">This will delete the parent's response to your daycare.</p>
+        </div>
+        <div class="mt-6 flex justify-end gap-4 mb-10 xl:mb-0">
+            <button class="flex-1 px-4 xl:px-6 py-3 h-14 w-full max-lg:max-w-32  hover:bg-accent_hover transition-all duration-300 rounded-full text-black font-medium cursor-pointer text-base xl:text-lg leading-6 font-rocaone border border-black hover:border-accent bg-transparent">Cancel
+            </button>
+            <button class="apply-now-button flex-1 px-4 xl:px-6 py-3 h-14 bg-accent hover:bg-accent_hover transition-all duration-300 rounded-full text-black font-medium cursor-pointer text-base xl:text-lg leading-6 font-rocaone">Remove Response
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Daycare dashboard FILTER -->
+<div id="parent-dashboard-filter-popup" class="fixed inset-0 bg-black/50 flex items-end xl:items-center justify-center z-50 opacity-0 transition-opacity duration-300 ease-in-out">
+    <div class="popup-content bg-white rounded-3xl max-w-xl w-full xl:mx-4 p-4 xl:p-6 relative transition-all duration-300 ease-in-out">
+        <button id="close-filter-popup" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center cursor-pointer">
+            <img src="/images/close-grey.svg" alt="Close" class="w-6 h-6">
+        </button>
+        <h2 class="text-2xl xl:text-textmed leading-120 font-rocaone mb-7">Filter by Child</h2>
+        <form action="#" class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2 flex-1">
+                <label class="pl-4 text-xs leading-120 text-black/80">Filter by child</label>
+                <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                    <p class="text-base leading-120">Select Child</p>
+                    <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(0deg); transition: transform 0.3s;">
+                    <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: none;">
+                        <ul class="flex flex-col rounded-xl bg-bg_grey">
+                            <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Child 1 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                            <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Child 2 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                            <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Child 3 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-2 flex-1">
+                <label class="pl-4 text-xs leading-120 text-black/80">Sort by</label>
+                <div class="filter-button flex items-center justify-between gap-2 h-12 px-4 py-4 rounded-xl bg-input_bg focus:bg-accent_skyblue/10 border border-transparent focus:outline-none focus:border-accent_skyblue cursor-pointer relative">
+                    <p class="text-base leading-120">Position On Waitlist</p>
+                    <img src="/images/caret-down.svg" alt="Caret Down" style="transform: rotate(0deg); transition: transform 0.3s;">
+                    <div class="w-full rounded-2xl p-2 absolute top-full bg-white left-0 shadow filter-dropdown" style="opacity: 0; max-height: 0px; overflow: hidden; transition: opacity 0.3s, max-height 0.3s; pointer-events: none;">
+                        <ul class="flex flex-col rounded-xl bg-bg_grey">
+                            <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Position 1 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                            <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Position 2 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                            <li class="py-3 px-2 text-sm group leading-120 relative rounded-xl hover:bg-accent_skyblue/10">Position 3 <img src="/images/blue-check.svg" alt="Blue Check" class="absolute top-1/2 -translate-y-1/2 right-2 hidden group-hover:block"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="mt-6 flex justify-end gap-4 mb-10 xl:mb-0">
+            <button class="flex-1 px-4 xl:px-6 py-3 h-12 max-md:max-w-full max-lg:max-w-32  hover:bg-accent_hover transition-all duration-300 rounded-full text-black font-medium cursor-pointer text-base xl:text-lg leading-6 font-rocaone border border-black hover:border-accent bg-transparent">Reset
+            </button>
+            <button class="apply-now-button flex-1 px-4 xl:px-6 py-3 h-12 bg-accent hover:bg-accent_hover transition-all duration-300 rounded-full text-black font-medium cursor-pointer text-base xl:text-lg leading-6 font-rocaone">Apply
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="remove-daycare-mobile-popup" class="fixed inset-0 bg-black/50 flex items-end xl:items-center justify-center z-50 opacity-0 transition-opacity duration-300 ease-in-out">
+    <div class="popup-content bg-white rounded-3xl max-w-xl w-full xl:mx-4 p-4 xl:p-6 relative transition-all duration-300 ease-in-out">
+        <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center cursor-pointer">
+            <img src="/images/close-grey.svg" alt="Close" class="w-6 h-6">
+        </button>
+        <h2 class="text-2xl xl:text-textmed leading-120 font-rocaone mb-7">Olivia Johnson</h2>
+        <div class="flex flex-col rounded-2xl overflow-hidden">
+            <div class="daycare-details-popup-button close-remove-daycare-popup border-b border-b-gray-200 w-full p-4.5 bg-bg_grey flex items-center gap-2">
+                <img src="/images/info.svg" alt="Delete">
+                <p class="text-base">Details</p>
+            </div>
+            <div class="terms-link apply-now-button close-remove-daycare-popup border-b border-b-gray-200 w-full p-4.5 bg-bg_grey flex items-center gap-2">
+                <img src="/images/edit-riw.svg" alt="Delete">
+                <p class="text-base">Edit Row</p>
+            </div>
+            <div class="send-invite-button close-remove-daycare-popup w-full border-b border-b-gray-200  p-4.5 bg-bg_grey flex items-center gap-2">
+                <img src="/images/send-invite.svg" alt="Delete">
+                <p class="text-base">Send Invite</p>
+            </div>
+            <div class="remove-response-button close-remove-daycare-popup w-full p-4.5 bg-bg_grey flex items-center gap-2">
+                <img src="/images/delete-blue.svg" alt="Delete">
+                <p class="text-base">Remove</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="daycare-remove-accept-response" class="fixed inset-0 bg-black/50 flex items-end xl:items-center justify-center z-50 opacity-0 transition-opacity duration-300 ease-in-out">
+    <div class="popup-content bg-white rounded-3xl max-w-xl w-full xl:mx-4 p-4 xl:p-6 relative transition-all duration-300 ease-in-out">
+        <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center cursor-pointer">
+            <img src="/images/close-grey.svg" alt="Close" class="w-6 h-6">
+        </button>
+        <h2 class="text-2xl xl:text-textmed leading-120 font-rocaone mb-7">Olivia Johnson</h2>
+        <div class="flex flex-col rounded-2xl overflow-hidden">
+            <div class="daycare-details-popup-button close-remove-daycare-popup border-b border-b-gray-200 w-full p-4.5 bg-bg_grey flex items-center gap-2">
+                <img src="/images/accept-response.svg" alt="Delete">
+                <p class="text-base">Accept</p>
+            </div>
+            <div class="remove-response-button close-remove-daycare-popup w-full p-4.5 bg-bg_grey flex items-center gap-2">
+                <img src="/images/delete-blue.svg" alt="Delete">
+                <p class="text-base">Remove</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="module" src="../src/main.js"></script>
+<script type="module" src="../src/daycare-delete.js"></script>
+<script type="module" src="../src/popup.js"></script>
+<script type="module" src="../daycare-dashboard-popups.js"></script>
+<script type="module" src="../src/parent-dashboard-tabs.js"></script>
+</body>
+</html>
