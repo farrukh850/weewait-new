@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./src/scrollbar.css">
     <link rel="stylesheet" href="./src/accordion.css">
     <link rel="stylesheet" href="./src/marquee.css">
+    <link rel="stylesheet" href="./src/chat-bubbles.css">
     <title>WeeWait</title>
     <link href="./src/input.css" rel="stylesheet">
     <!-- Vite script will be injected here automatically during development -->
@@ -77,25 +78,25 @@
                      <div class="col-span-12 lg:col-span-8 order-1 lg:order-2">
                          <h3 class="text-textmed leading-120 font-semibold pl-8">My Story as a Parent</h3>
                          <div class="flex flex-col gap-4 mt-6">
-                             <div class="relative p-6 lg:p-8 bg-bg_grey rounded-32">
+                             <div class="relative p-6 lg:p-8 bg-bg_grey rounded-32 chat-bubble transition-all duration-500">
                                 <p class="text-base lg:text-lg leading-120">When I was looking for daycare for my child, I was overwhelmed. Every center had its own form, its own process, its own waitlist — and no way to know where I stood. I spent hours filling out the same information over and over, making calls, following up… and still felt like I was in the dark.</p>
-                                 <img src="/images/quote.svg" alt="Quotes" class="absolute -left-3 top-0">
+                                <img src="/images/quote.svg" alt="Quotes" class="absolute -left-3 top-0">
                              </div>
-                             <div class="relative p-6 lg:p-8 bg-bg_grey rounded-32">
-                                 <p class="text-base lg:text-lg leading-120">I kept thinking:</p>
-                                 <b class="text-base lg:text-lg leading-120 mt-2 block">“Why isn’t there one place where I can manage all of this — easily?”</b>
-                                 <img src="/images/quote.svg" alt="Quotes" class="absolute -left-3 top-0">
+                             <div class="relative p-6 lg:p-8 bg-bg_grey rounded-32 chat-bubble transition-all duration-500">
+                                <p class="text-base lg:text-lg leading-120">I kept thinking:</p>
+                                <b class="text-base lg:text-lg leading-120 mt-2 block">"Why isn't there one place where I can manage all of this — easily?"</b>
+                                <img src="/images/quote.svg" alt="Quotes" class="absolute -left-3 top-0">
                              </div>
-                             <div class="relative p-6 lg:p-8 bg-bg_grey rounded-32">
-                                 <p class="text-base lg:text-lg leading-120">That question led to WeeWait.</p>
-                                 <img src="/images/quote.svg" alt="Quotes" class="absolute -left-3 top-0">
+                             <div class="relative p-6 lg:p-8 bg-bg_grey rounded-32 chat-bubble transition-all duration-500">
+                                <p class="text-base lg:text-lg leading-120">That question led to WeeWait.</p>
+                                <img src="/images/quote.svg" alt="Quotes" class="absolute -left-3 top-0">
                              </div>
-                             <div class="relative p-6 lg:p-8 bg-bg_grey rounded-32">
-                                 <p class="text-base lg:text-lg leading-120">Now, instead of chaos, we offer clarity. Instead of chasing daycares, parents can focus on their kids. WeeWait helps families like mine (and maybe yours) simplify the daycare search — and take back their time and peace of mind.</p>
-                                 <img src="/images/quote.svg" alt="Quotes" class="absolute -left-3 top-0">
+                             <div class="relative p-6 lg:p-8 bg-bg_grey rounded-32 chat-bubble transition-all duration-500">
+                                <p class="text-base lg:text-lg leading-120">Now, instead of chaos, we offer clarity. Instead of chasing daycares, parents can focus on their kids. WeeWait helps families like mine (and maybe yours) simplify the daycare search — and take back their time and peace of mind.</p>
+                                <img src="/images/quote.svg" alt="Quotes" class="absolute -left-3 top-0">
                              </div>
-                             <button class="lg:px-8 lg:py-7 py-5 px-8 text-xl leading-6 font-rocaone bg-accent hover:bg-accent_hover transition-all duration-300 rounded-32 relative">Get Started
-                                 <img src="/images/pink-quote.svg" alt="Pink Quote" class="absolute top-0 right-0"></button>
+                            <button class="lg:px-8 lg:py-7 py-5 px-8 text-xl leading-6 font-rocaone bg-accent hover:bg-accent_hover transition-all duration-300 rounded-32 relative get-started-button">Get Started
+                             <img src="/images/pink-quote.svg" alt="Pink Quote" class="absolute top-0 right-0"></button>
                          </div>
                      </div>
                  </div>
@@ -257,5 +258,6 @@
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/chat-bubbles.js"></script>
 </body>
 </html>

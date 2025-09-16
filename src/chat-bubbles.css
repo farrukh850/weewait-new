@@ -1,0 +1,51 @@
+/* Chat loading dots animation */
+.chat-loading-dots {
+    display: none;
+    width: 70px;
+    margin-bottom: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-loading-dots span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #a0a9b2;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: dots-animation 1.4s infinite ease-in-out;
+}
+
+.chat-loading-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.chat-loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.chat-loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dots-animation {
+    0%, 100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Transitions for chat bubbles */
+.chat-bubble {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.get-started-button {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
