@@ -416,6 +416,29 @@ function initRangeSlider() {
     }
   });
 
+  // Add event listeners for manual input in the price fields
+  const priceInputs = document.querySelectorAll('.min-value, .max-value');
+  priceInputs.forEach(input => {
+    // Listen for changes to the input value
+    input.addEventListener('input', function(e) {
+      handlePriceInputChange(input);
+    });
+
+    // Update when focus is lost
+    input.addEventListener('blur', function(e) {
+      validateAndFormatInput(input);
+    });
+
+    // Handle Enter key press
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        validateAndFormatInput(input);
+        input.blur();
+      }
+    });
+  });
+
   rangeSliders.forEach(handle => {
     handle.addEventListener('mousedown', startDrag);
     handle.addEventListener('touchstart', startDrag, { passive: false });
@@ -526,13 +549,90 @@ function initRangeSlider() {
     const maxPrice = Math.round(20 + (maxPercent / 100) * priceRange);
 
     // Update the displayed values
-    minValueEl.textContent = `$ ${minPrice}`;
-    maxValueEl.textContent = `$ ${maxPrice}`;
+    minValueEl.value = `$ ${minPrice}`;
+    maxValueEl.value = `$ ${maxPrice}`;
 
     // Update fill element width
     const fillElement = slider.querySelector('.range-slider-fill');
     if (fillElement) {
       fillElement.style.width = `${maxPercent - minPercent}%`;
+    }
+  }
+
+  // Function to handle price input changes
+  function handlePriceInputChange(input) {
+    // Allow typing without immediate validation
+    // We'll validate and format on blur or Enter key
+  }
+
+  // Function to validate and format input
+  function validateAndFormatInput(input) {
+    const isMinValue = input.classList.contains('min-value');
+
+    // Extract numeric value
+    let value = input.value.replace(/[^\d]/g, '');
+
+    // Convert to number and validate range
+    let numValue = parseInt(value);
+    if (isNaN(numValue)) numValue = isMinValue ? 20 : 200;
+
+    // Enforce min/max constraints
+    numValue = Math.max(20, Math.min(200, numValue));
+
+    // Get the container and find the other input
+    const container = input.closest('.filter-dropdown, .flex.flex-col.gap-2');
+    const otherInput = isMinValue
+      ? container.querySelector('.max-value')
+      : container.querySelector('.min-value');
+
+    const otherValue = parseInt(otherInput.value.replace(/[^\d]/g, ''));
+
+    // Ensure min doesn't exceed max and max doesn't go below min
+    if (isMinValue && numValue > otherValue) {
+      numValue = otherValue;
+    } else if (!isMinValue && numValue < otherValue) {
+      numValue = otherValue;
+    }
+
+    // Format and set the value
+    input.value = `$ ${numValue}`;
+
+    // Update slider positions
+    updateSliderPositionsFromInputs(container);
+  }
+
+  // Function to update slider positions based on input values
+  function updateSliderPositionsFromInputs(container) {
+    const minValueEl = container.querySelector('.min-value');
+    const maxValueEl = container.querySelector('.max-value');
+
+    if (!minValueEl || !maxValueEl) return;
+
+    const minPrice = parseInt(minValueEl.value.replace(/[^\d]/g, ''));
+    const maxPrice = parseInt(maxValueEl.value.replace(/[^\d]/g, ''));
+
+    if (isNaN(minPrice) || isNaN(maxPrice)) return;
+
+    const slider = container.querySelector('.range-slider-min').closest('span');
+    const minHandle = slider.querySelector('.range-slider-min');
+    const maxHandle = slider.querySelector('.range-slider-max');
+    const fillElement = slider.querySelector('.range-slider-fill');
+
+    const sliderWidth = slider.offsetWidth - minHandle.offsetWidth;
+    const priceRange = 180; // $200 - $20
+
+    // Calculate and set positions
+    const minPercent = ((minPrice - 20) / priceRange) * 100;
+    const maxPercent = ((maxPrice - 20) / priceRange) * 100;
+
+    minHandle.style.left = `${(minPercent / 100) * sliderWidth}px`;
+    maxHandle.style.left = `${(maxPercent / 100) * sliderWidth}px`;
+
+    if (fillElement) {
+      const minHandlePos = minHandle.offsetLeft + (minHandle.offsetWidth / 2);
+      const maxHandlePos = maxHandle.offsetLeft + (maxHandle.offsetWidth / 2);
+      fillElement.style.left = `${minHandlePos}px`;
+      fillElement.style.width = `${maxHandlePos - minHandlePos}px`;
     }
   }
 
@@ -546,4 +646,3 @@ function initRangeSlider() {
     }
   });
 }
-
