@@ -63,7 +63,11 @@
 button {
   cursor: pointer;
 }
-
+.container-fluid {
+    left: calc((100% - 1400px) / 2);
+    position: relative;
+    margin: 0 auto;
+}
 /* Custom utility classes optimized for v4.1 */
 @layer utilities {
   /* Font families */

@@ -34,6 +34,8 @@
     { "source": "/faq", "destination": "/faq.html" },
     { "source": "/how-it-works", "destination": "/how-it-works.html" },
     { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/daycares", "destination": "/daycares.html" },
+    { "source": "/for-families", "destination": "/for-families.html" },
     { "source": "/thank-you", "destination": "/thank-you.html" },
     { "source": "/terms-daycare", "destination": "/terms-daycare.html" },
     { "source": "/terms-parents", "destination": "/terms-parents.html" },

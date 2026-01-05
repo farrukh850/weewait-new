@@ -13,6 +13,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        daycares: resolve(__dirname, 'daycares.html'),
+        forFamilies: resolve(__dirname, 'for-families.html'),
         pricing: resolve(__dirname, 'pricing.html'),
         faq: resolve(__dirname, 'faq.html'),
         contact: resolve(__dirname, 'contact.html'),
