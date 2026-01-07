@@ -1,41 +1,123 @@
 // Circular Step Loader with Progressive Arc Fill and Image Transitions
+// Responsive slider that shows desktop or mobile version based on viewport width
 document.addEventListener('DOMContentLoaded', function() {
-  const steps = [
-    { element: document.querySelector('.step-one'), image: document.querySelector('.step-one-image'), arc: null },
-    { element: document.querySelector('.step-two'), image: document.querySelector('.step-two-image'), arc: null },
-    { element: document.querySelector('.step-three'), image: document.querySelector('.step-three-image'), arc: null },
-    { element: document.querySelector('.step-four'), image: document.querySelector('.step-four-image'), arc: null }
+  const desktopSlider = document.querySelector('.slider-desktop');
+  const mobileSlider = document.querySelector('.slider-mobile');
+
+  // Step data for mobile content updates
+  const stepData = [
+    {
+      number: '1',
+      title: 'Create your account',
+      description: 'Enter basic details and set a secure password.'
+    },
+    {
+      number: '2',
+      title: 'Import your waitlist',
+      description: 'Bring your current list into the system in a few clicks, in any format.'
+    },
+    {
+      number: '3',
+      title: 'Share your daycare with families',
+      description: 'Share to grab your custom sign-up link and QR code.'
+    },
+    {
+      number: '4',
+      title: 'You\'re set for success',
+      description: 'Configure your rooms with presets and adjust the setup anytime.'
+    }
+  ];
+
+  let steps = [
+    { element: document.querySelector('.step-one'), images: [], arc: null },
+    { element: document.querySelector('.step-two'), images: [], arc: null },
+    { element: document.querySelector('.step-three'), images: [], arc: null },
+    { element: document.querySelector('.step-four'), images: [], arc: null }
   ];
 
   let currentStep = 0;
   const totalSteps = steps.length;
-  const transitionDuration = 4000; // 3 seconds per step
+  const transitionDuration = 6000; // 6 seconds per step
   let progressInterval = null;
   let fillPercentage = 0;
 
-  // Initialize steps and get arc loaders
+  // Determine which slider is active based on viewport width
+  function getActiveSlider() {
+    return window.innerWidth >= 1024 ? desktopSlider : mobileSlider;
+  }
+
+  // Update mobile step content
+  function updateMobileStepContent(stepIndex) {
+    const mobileNumber = document.querySelector('.step-mobile-number');
+    const mobileTitle = document.querySelector('.step-mobile-title');
+    const mobileDescription = document.querySelector('.step-mobile-description');
+
+    if (mobileNumber && mobileTitle && mobileDescription) {
+      const data = stepData[stepIndex];
+      mobileNumber.textContent = data.number;
+      mobileTitle.textContent = data.title;
+      mobileDescription.textContent = data.description;
+    }
+  }
+
+  // Initialize steps with images from the active slider
   function initializeSteps() {
-    // Get all arc loaders
+    const activeSlider = getActiveSlider();
+
     steps.forEach((step, index) => {
+      // Get arc loader from step element
       if (step.element) {
         step.arc = step.element.querySelector('.arc-loader');
       }
+
+      // Get images from active slider only
+      if (activeSlider) {
+        const stepNames = ['one', 'two', 'three', 'four'];
+        const img = activeSlider.querySelector(`.step-${stepNames[index]}-image`);
+        if (img) {
+          step.images = [img];
+        } else {
+          step.images = [];
+        }
+      }
     });
 
-    // Show first image
-    if (steps[0].image) {
-      steps[0].image.classList.remove('hidden');
-      steps[0].image.style.opacity = '1';
-      steps[0].image.style.transition = 'opacity 0.5s ease-in-out';
+    // On mobile, get the arc loader from step-mobile element
+    if (window.innerWidth < 1024) {
+      const mobileStepElement = document.querySelector('.step-mobile');
+      if (mobileStepElement) {
+        const mobileArc = mobileStepElement.querySelector('.arc-loader');
+        if (mobileArc) {
+          // Override all step arcs with the mobile arc for mobile view
+          steps.forEach(step => {
+            step.arc = mobileArc;
+          });
+        }
+      }
     }
 
-    // Hide all other images
+    // Show first image and hide others
+    if (steps[0].images.length > 0) {
+      steps[0].images.forEach(img => {
+        img.classList.remove('hidden');
+        img.style.opacity = '1';
+        img.style.transition = 'opacity 0.5s ease-in-out';
+      });
+    }
+
     for (let i = 1; i < totalSteps; i++) {
-      if (steps[i].image) {
-        steps[i].image.classList.add('hidden');
-        steps[i].image.style.opacity = '0';
-        steps[i].image.style.transition = 'opacity 0.5s ease-in-out';
+      if (steps[i].images.length > 0) {
+        steps[i].images.forEach(img => {
+          img.classList.add('hidden');
+          img.style.opacity = '0';
+          img.style.transition = 'opacity 0.5s ease-in-out';
+        });
       }
+    }
+
+    // Update mobile step content on initialization
+    if (window.innerWidth < 1024) {
+      updateMobileStepContent(0);
     }
   }
 
@@ -95,7 +177,6 @@ document.addEventListener('DOMContentLoaded', function() {
       clearInterval(progressInterval);
     }
 
-    // Add expanded class to start the transition
     if (steps[stepIndex].arc) {
       steps[stepIndex].arc.classList.add('expanded');
     }
@@ -124,9 +205,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Hide all images
   function hideAllImages() {
     steps.forEach(step => {
-      if (step.image) {
-        step.image.classList.add('hidden');
-        step.image.style.opacity = '0';
+      if (step.images.length > 0) {
+        step.images.forEach(img => {
+          img.classList.add('hidden');
+          img.style.opacity = '0';
+        });
       }
     });
   }
@@ -134,11 +217,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Show specific image with fade-in
   function showImage(stepIndex) {
     hideAllImages();
-    if (steps[stepIndex].image) {
-      steps[stepIndex].image.classList.remove('hidden');
-      // Trigger reflow to ensure transition works
-      void steps[stepIndex].image.offsetWidth;
-      steps[stepIndex].image.style.opacity = '1';
+    if (steps[stepIndex].images.length > 0) {
+      steps[stepIndex].images.forEach(img => {
+        img.classList.remove('hidden');
+        // Trigger reflow to ensure transition works
+        void img.offsetWidth;
+        img.style.opacity = '1';
+      });
     }
   }
 
@@ -147,12 +232,34 @@ document.addEventListener('DOMContentLoaded', function() {
     resetAllArcs();
     currentStep = (currentStep + 1) % totalSteps;
     showImage(currentStep);
+
+    // Update mobile step content when cycling
+    if (window.innerWidth < 1024) {
+      updateMobileStepContent(currentStep);
+    }
+
     startArcFill(currentStep);
   }
+
+  // Handle window resize to reinitialize on breakpoint change
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      // Reinitialize slider on viewport change
+      resetAllArcs();
+      currentStep = 0;
+      initializeSteps();
+      showImage(currentStep);
+      startArcFill(currentStep);
+    }, 250); // Debounce resize events
+  });
 
   // Initialize and start cycling
   initializeSteps();
   showImage(currentStep);
+  if (window.innerWidth < 1024) {
+    updateMobileStepContent(currentStep);
+  }
   startArcFill(currentStep);
 });
-

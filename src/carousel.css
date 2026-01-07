@@ -82,4 +82,23 @@
     stroke: white;
 }
 
-/* Rest of carousel styles */
+/* Responsive Slider Display */
+/* Show mobile slider on small screens (< 1024px / lg breakpoint) */
+.slider-mobile {
+    display: block;
+}
+
+.slider-desktop {
+    display: none;
+}
+
+/* Show desktop slider on large screens (>= 1024px / lg breakpoint) */
+@media (min-width: 1024px) {
+    .slider-mobile {
+        display: none;
+    }
+
+    .slider-desktop {
+        display: block;
+    }
+}
